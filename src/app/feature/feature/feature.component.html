@@ -1,0 +1,127 @@
+<app-submenu-list [ActiveMenu]='ActiveMenu'></app-submenu-list>
+<section class="main-wrapper prod-list-page">
+    <div class="l-container">
+        <button class="closeDel  btnClass" style="margin-bottom: 9px; float: left; margin-right: 9px;"
+            (click)="openPopup('BULK','')"><span _ngcontent-hlk-c181="" class="mat-button-wrapper">Bulk Upload</span>
+            <div _ngcontent-hlk-c181="" matripple="" class="mat-button-ripple mat-ripple"></div>
+            <div _ngcontent-hlk-c181="" class="mat-button-focus-overlay"></div>
+        </button>
+        <!-- <app-filter #filterComponent [filterFields]="filterFields" (filterInput)="filterData($event)"
+            [Filterarray]="Filterarray">
+        </app-filter> -->
+        <div class="l-content w-100 p-0">
+            <div class="tbl-reports card-shadow bg-white h-100">
+                <div class="l-tbl-accordion overflow-auto">
+                    <div class="w-100 border-0 p-3">
+                        <div class="table-responsive">
+                            <table class="l-tbl">
+                                <tr class="main-tr">
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>VC. No.</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>LOB</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>PPL</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>PL</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Description</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Created Date</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center">
+                                            <span>Status</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <ng-container *ngIf="featureList.length >0">
+                                    <tr *ngFor="let row of featureList" class="click-tr">
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap link">
+                                                <a> {{ row?.vc }} </a>
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.lob }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.ppl}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.pl }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.description}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.created_date | date :'dd-MM-yyyy hh:mm a' }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.status}}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                <ng-container *ngIf="featureList.length == 0">
+                                    <tr class="text-nowrap text-align-center">
+                                        No Data Found
+                                    </tr>
+                                </ng-container>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="paging" style="margin-bottom: 40px;margin-top: 20px;">
+                <app-pagination [activePage]="currentPage" [totalRecords]="totalrecord"
+                    *ngIf="totalrecord>10; else lessThanTenRecord" [recordsPerPage]="noofrecordsperpage"
+                    (onPageChange)="pageChange($event,true)" [showrecords]="showRecords"></app-pagination>
+                <ng-template #lessThanTenRecord>
+                    <div class="row">
+                        <div class="col-3">
+                            <div *ngIf="totalrecord && totalrecord" class="info">Showing {{totalrecord}}/{{totalrecord}}
+                                results</div>
+                        </div>
+                        <div class="col-8"></div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #bulkUpload let-d="dismiss4">
+    <app-feature-upload></app-feature-upload>
+</ng-template>
+<ng-container *ngIf="showLoader">
+    <div class="loader">
+        <div class="ng-spinner ng-spinner-icon">
+            <br />
+            <div class="sh1"></div>
+            <div class="sh2"></div>
+        </div>
+    </div>
+</ng-container>

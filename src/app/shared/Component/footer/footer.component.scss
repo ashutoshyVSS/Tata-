@@ -1,0 +1,116 @@
+
+footer.footer-wrapper{
+    background-color: #080c5c;
+    line-height: 1.75;
+    letter-spacing: 0.2px;
+    color: #ffffff;
+    margin-top: 15px;
+    padding: 15px;
+    h2.footer-title{
+        font-size: 28px;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 15px;
+    }
+    ul.menu-option{
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        li{
+            padding-bottom: 10px;
+            a{
+                color: #e1e1e1;
+                font-size: 14px;
+                text-decoration: none;
+                cursor: pointer;
+                transition: all 0.35s ease-in-out;
+                position: relative;
+                &:hover, &:active{
+                    padding-left: 20px;
+                    color: #fff;
+                    cursor: pointer;
+                    text-decoration: none;
+                    &:before{
+                        margin-left: -20px;
+                        position: absolute;
+                        content: '\279C';
+                    }
+                }
+            }
+           
+        }
+    }
+    .google-play{   
+        font-size: 16px;
+        a{
+            text-decoration: none;
+            cursor: pointer;
+            max-width: 200px;
+            display: flex;      
+            img{
+                border-radius: 10px;
+                border: 2px solid #ccc;
+            }
+        }     
+        
+    }
+    .mailing-list{
+        font-size: 18px;
+        .mailing-wrapper{
+            border-radius: 4px;
+            border: solid 2px #ffffff;
+            display: inline-block;
+            input{
+                background-color: #080c5c;
+                color: #ffffff;
+                font-size: 14px;
+                border:none;
+                outline: none;
+                padding: 10px 15px;
+                height: 36px;
+                line-height: 36px;
+                width: 250px;
+            }
+            button{
+                background-color: #141a92;
+                color: #fff;
+                border-radius: 0;
+                border: none;
+                height: 40px;
+                padding: 0 15px;
+            }
+        }
+    }
+    hr{
+        margin-bottom: 15px;
+        border-bottom: solid 1px #979797;
+        display: flex;
+    }
+    ul.bottom-footer{
+        padding-left: 0;
+        margin-bottom: 0;
+        li{
+            list-style: none;
+            display: inline-flex;
+            
+            &:last-child{
+                float: right;
+                a{
+                    padding: 2px 10px;
+                    margin-left: 15px;
+                    display: inline-block;
+                    img{
+                        width: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.fb-color{
+    color: white !important;
+}
+
+

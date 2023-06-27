@@ -1,0 +1,70 @@
+/*=============================
+    6.   V A R I A B L E S
+===============================*/
+
+/*========= COLORS CSS ========*/
+$clr-black            :#333333;
+$clr-white            :#ffffff;
+
+$clr-grey             :#CCCCCC;
+$clr-grey-lighter     :#ebedf7;
+$clr-light-grey       :#F6F6F6;
+$clr-dark-grey        :#999999;
+$clr-extralight-grey  :#F9F9F9;
+
+$clr-blue             :#080C5C;
+$clr-light-blue       :#307fe2;  
+$clr-light-blue2      :#67c8fa;  
+$clr-extralight-blue  :#e8ecf8;  
+
+$clr-green            :#3e894b;  
+$clr-orange           :#F2994A;  
+$clr-orange-2         :#FF6A19;  
+$clr-inactive         :#666C84; 
+
+
+
+.clr-white              {color:$clr-white !important;}
+.clr-black              {color:$clr-black !important;}
+.clr-grey               {color:$clr-grey !important;}
+.clr-light-grey         {color:$clr-light-grey !important;}
+.clr-dark-grey          {color:$clr-dark-grey !important;}
+.clr-extralight-grey    {color:$clr-extralight-grey !important;}
+.clr-blue               {color:$clr-blue !important;}
+.clr-light-blue         {color:$clr-light-blue !important;}
+.clr-extralight-blue    {color:$clr-extralight-blue !important;}
+.clr-orange             {color:$clr-orange !important;}
+.clr-inactive           {color:$clr-inactive !important;}
+.clr-green              {color:$clr-green !important;}
+.clr-orange-2           {color:$clr-orange-2 !important;}
+
+.bg-clr-white              {background:$clr-white !important;}
+.bg-clr-black              {background:$clr-black !important;}
+.bg-clr-grey               {background:$clr-grey !important;}
+.bg-clr-light-grey         {background:$clr-light-grey !important;}
+.bg-clr-dark-grey          {background:$clr-dark-grey !important;}
+.bg-clr-extralight-grey    {background:$clr-extralight-grey !important;}
+.bg-clr-blue               {background:$clr-blue !important;}
+.bg-clr-light-blue         {background:$clr-light-blue !important;}
+.bg-clr-extralight-blue    {background:$clr-extralight-blue !important;}
+.bg-clr-orange             {background:$clr-orange !important;}
+.bg-clr-inactive           {background:$clr-inactive !important;}
+.bg-clr-green              {background:$clr-green !important;}
+.bg-clr-orange-2           {background:$clr-orange-2 !important;}
+
+/* 
+$clr-blue             :#417BE2;  
+$clr-blue-1           :#67C8FA;  
+$clr-blue-2           :#080C5C;  
+$clr-orange           :#F3953E;  
+$clr-orange-2         :#FF6A19;   
+$clr-border           :#EBEDF7;   
+$clr-green            :#3E894B;
+*/
+
+
+// ===== Breackpoints =====================
+$desktop_lg  : "(max-width: 1440px)";
+$desktop     : "(max-width: 1200px)";
+$tablet      : "(max-width: 992px)";
+$mobile      : "(max-width: 768px)";

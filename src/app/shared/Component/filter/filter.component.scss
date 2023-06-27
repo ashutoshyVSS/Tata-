@@ -1,0 +1,58 @@
+.search-order-id {
+    float: left;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.search-order-id .textfield{
+    padding: 0px 41px 0px 15px !important;
+}
+
+.search-order-id button.btn-filter {
+    border: 0;
+    margin-left: 10px;
+    background: none;
+    width: 40px;
+    /* padding: 11px; */
+}
+
+::ng-deep .search-order-id .material-icons {
+    position: relative !important; 
+    top: 0;
+    width: 40px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #307fe2;
+    margin-left: -45px !important
+}
+
+.dsaboard-filter-align{
+    max-width: 50px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: left;
+}
+
+.search-order-id button.btn-filter {
+    padding: 0px; 
+}
+
+.refresh{
+    padding: 5px;
+    border-radius: 5px;
+}
+::ng-deep .filter-popup .checkbox input[type=checkbox]+label{
+    white-space: break-spaces;
+}

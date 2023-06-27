@@ -1,0 +1,24 @@
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">vc</th>
+        <th scope="col">lob</th>
+        <th scope="col">ppl</th>
+        <th scope="col">pl</th>
+        <th scope="col">description</th>
+        <th scope="col">created_date</th>
+        <th scope="col">status</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let row of testiominalList">
+      <tr>
+        <th scope="row">{{row.vc}}</th>
+        <td>{{row?.lob}}</td>
+        <td>{{row.ppl}}</td>
+        <td>{{row.pl}}</td>
+        <td>{{row.description}}</td>
+        <td>{{row.created_date}}</td>
+        <td>{{row.status}}</td>
+      </tr>
+      </tbody>
+</table>

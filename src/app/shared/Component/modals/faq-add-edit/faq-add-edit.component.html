@@ -1,0 +1,40 @@
+<div class="container">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: right;
+background: transparent;
+border: none;
+color: #000;
+font-size: 25px;" (click)="goBack()">
+        <span aria-hidden="true">×</span>
+    </button>
+    <div class="m-4 p-3">
+        <form [formGroup]="faqForm" autocomplete="off">
+            <div class="row">
+                <div maxlength="200" class="faq-font-label">Question :<label class="ng-tns-c39-61"
+                        style="font-size: smaller; color:red; float: left;">*</label></div>
+                <textarea formControlName="question" style="height: 100px; border-radius: 11px;"></textarea>
+                <p class="mt-2" style="padding-left: 0px; font-size: 12px;">Characters Remaining: {{faqForm.controls['question'].value.length}}/200</p>
+            </div>
+            <div class="row">
+                <div class="faq-font-label">Answer :<label class="ng-tns-c39-61"
+                        style="font-size: smaller; color:red; float: left;">*</label></div>
+                <textarea maxlength="5000" formControlName="answer" style="height: 100px; border-radius: 11px;"></textarea>
+                <p class="mt-2" style="padding-left: 0px; font-size: 12px;">Characters Remaining: {{faqForm.controls['answer'].value.length}}/5000</p>
+            </div>
+            <div class="row">
+                <span class="d-flex">
+                    <label for="Status">Status :</label>
+                    <label class="switch">
+                        <input type="checkbox" formControlName="status">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+            </div>
+            <button class="closeDel mat-raised-button mat-primary" mat-raised-button="" style="margin-bottom: 9px;
+  float: right;
+  margin-right: 9px;"><span class="mat-button-wrapper" (click)="update()">{{this.flag == 'EDIT' ? "Update": "Submit"}}</span>
+                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                <div class="mat-button-focus-overlay"></div>
+            </button>
+        </form>
+    </div>
+</div>

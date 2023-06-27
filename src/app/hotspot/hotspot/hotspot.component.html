@@ -1,0 +1,89 @@
+<app-submenu-list [ActiveMenu]='ActiveMenu'></app-submenu-list>
+<section class="main-wrapper prod-list-page">
+    <div class="l-container">
+        <div class="row mt-5">
+            <div class="card shadow mb-5">
+                <h2 class="mt-2 heading">
+                    <strong>Hotspot</strong>
+                </h2>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="mb-5">
+                            <div class="col-8">
+                                <div class="p-5">
+                                    <b style="color: red;">Instruction:</b>
+                                    <br />1.Please filled all mandatory fields(marked with red color)
+                                    <br />2.Click on the image for adding new hotspot.
+                                </div>
+                                <div class="p-5">
+                                    <!-- <div maxlength="200" class="faq-font-label">Select Page :</div> -->
+                                    <input type="radio" id="INTERIOR" name="banner_Page" value="INTERIOR"
+                                        (change)="OnchagePageType($event)" [checked]="pageType == 'INTERIOR'">
+                                      <label for="INTERIOR">INTERIOR</label>&nbsp;&nbsp;
+                                    <input type="radio" id="PERFORMANCE" name="banner_Page" value="PERFORMANCE"
+                                        (change)="OnchagePageType($event)" [checked]="pageType == 'PERFORMANCE'">
+                                      <label for="PERFORMANCE">PERFORMANCE</label>&nbsp;&nbsp;
+                                    <input type="radio" id="EXTERIOR" name="banner_Page" value="EXTERIOR"
+                                        (change)="OnchagePageType($event)" [checked]="pageType == 'EXTERIOR'">
+                                      <label for="EXTERIOR">EXTERIOR</label>
+                                </div>
+                                <div class="image-container">
+                                    <input class="delete" *ngIf="imageURL" type="button" (click)="removeImage()"
+                                        value="X">
+                                    <img width="100%" *ngIf="imageURL" [src]="imageURL" class="image"
+                                        (click)="addMarker($event)">
+                                    <div *ngFor="let marker of markers" [style.left.px]="marker.x"
+                                        [style.top.px]="marker.y" class="marker">
+                                        <span class="pointer"></span>
+                                    </div>
+                                    
+                                </div>
+
+                                <label *ngIf="!imageURL">
+                                    <input #inputFile id="inputFile" type="file" (change)="onSelectImagefile($event)"
+                                        style="display:none" />
+                                    <a color="primary" style="background: #0d6efd;
+                                        color: white;
+                                        padding: 8px;
+                                        border-radius: 5px;">
+                                        Upload
+                                    </a>
+                                </label>
+                                <div class="mb-5 P-5">
+                                    <span class="d-flex">
+
+                                        <!-- <button *ngIf="!imageURL" class="btnClass" (click)="saveHotspot()">Save
+                                        </button> -->
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-5 P-5 d-flex">
+                                    <div class="flex-end" style="justify-content: flex-end;">
+                                        <button *ngIf="imageURL" class="btnClass" (click)="saveHotspot()">Save
+                                        </button>
+                                    </div>
+                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #addHotspot let-d="dismiss4">
+    <app-add-hotspot (popupDataEmit)="popupDataEmit($event)"></app-add-hotspot>
+</ng-template>
+<ng-container *ngIf="showLoader">
+    <div class="loader">
+        <div class="ng-spinner ng-spinner-icon">
+            <br />
+            <div class="sh1"></div>
+            <div class="sh2"></div>
+        </div>
+    </div>
+</ng-container>

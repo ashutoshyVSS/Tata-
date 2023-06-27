@@ -1,0 +1,91 @@
+<section class="main-wrapper dashboard">
+    <div class="l-container">
+        <div class="row">
+            <app-filter #filterComponent [filterFields]="filterFields" (filterInput)="filterData($event)" [Filterarray]="Filterarray">
+            </app-filter>
+        </div>
+        <div class="row">
+            <div class="col-12 small-charts card-shadow seperate-div-order-invoice-level-right-top-card">
+                <div class="row">
+                    <div class="col">
+                        <div class="small-charts__aside card-shadow bg-white">
+                            <div class="icons cursor"><img src="assets/images/planned-orders.svg" alt=""></div>
+                            <div class="data">
+                                <!-- <h3>₹ 98,63,500</h3> -->
+                                <p class="textFont m-0 text-13  line-height-1 cursor">Total Customers</p>
+                                <span style="color: #00bfff;"
+                                    class="text-16 font-weight-bold text-blue cursor">#{{dashboardData?.total_users}}</span><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="small-charts__aside card-shadow bg-white">
+                            <div class="icons cursor"><img src="assets/images/planned-orders.svg" alt=""></div>
+                            <div class="data">
+                                <!-- <h3>₹ 98,63,500</h3> -->
+                                <p class="textFont m-0 text-13  line-height-1 cursor">Total Request</p>
+                                <span style="color: #00bfff;"
+                                    class="text-16 font-weight-bold text-blue cursor">#{{dashboardData?.total_leads}}</span><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="small-charts__aside card-shadow bg-white">
+                            <div class="icons cursor"><img src="assets/images/planned-orders.svg" alt=""></div>
+                            <div class="data">
+                                <!-- <h3>₹ 98,63,500</h3> -->
+                                <p class="textFont m-0 text-13  line-height-1 cursor">Booking Amount</p>
+                                <span style="color: #00bfff;"
+                                    class="text-16 font-weight-bold text-blue cursor">#{{dashboardData?.total_amount}}</span><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="small-charts__aside card-shadow bg-white">
+                            <div class="icons cursor"><img src="assets/images/planned-orders.svg" alt=""></div>
+                            <div class="data">
+                                <!-- <h3>₹ 98,63,500</h3> -->
+                                <p class="textFont m-0 text-13  line-height-1 cursor">Call-Back Requet Count</p>
+                                <span style="color: #00bfff;"
+                                    class="text-16 font-weight-bold text-blue cursor">#{{dashboardData?.callback_count}}</span><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="small-charts__aside card-shadow bg-white">
+                            <div class="icons cursor"><img src="assets/images/planned-orders.svg" alt=""></div>
+                            <div class="data">
+                                <!-- <h3>₹ 98,63,500</h3> -->
+                                <p class="textFont m-0 text-13  line-height-1 cursor">C0 Prospecting</p>
+                                <span style="color: #00bfff;"
+                                    class="text-16 font-weight-bold text-blue cursor">#{{dashboardData?.c0_count}}</span><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="small-charts__aside card-shadow bg-white">
+                            <div class="icons cursor"><img src="assets/images/planned-orders.svg" alt=""></div>
+                            <div class="data">
+                                <!-- <h3>₹ 98,63,500</h3> -->
+                                <p class="textFont m-0 text-13  line-height-1 cursor">C2 (Adv. Received)</p>
+                                <span style="color: #00bfff;"
+                                    class="text-16 font-weight-bold text-blue cursor">#{{dashboardData?.c2_count}}</span><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="small-charts__aside card-shadow bg-white">
+                            <div class="icons cursor"><img src="assets/images/planned-orders.svg" alt=""></div>
+                            <div class="data">
+                                <!-- <h3>₹ 98,63,500</h3> -->
+                                <p class="textFont m-0 text-13  line-height-1 cursor">C3 (Vehicle Delivered)</p>
+                                <span style="color: #00bfff;"
+                                    class="text-16 font-weight-bold text-blue cursor">#{{dashboardData?.c3_count}}</span><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,160 @@
+/* .mat-dialog-content {
+  min-height: 122px;
+} */
+
+
+
+
+.loader {
+    display: block;
+    position: fixed !important;
+    left: 0px !important;
+    top: 0px !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    transition: width 0.8 0s, opacity 0s 0s;
+    opacity: 1 !important;
+    z-index: 9999 !important;
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: all;
+    cursor: wait;
+}
+
+.ng-spinner {
+    z-index: 9999 !important;
+    top: calc(50% - 50px) !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.ng-spinner-icon {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50px;
+    border-top: 1.5px solid rgba(0, 0, 0, .2) !important;
+    border-left: 1.5px solid rgba(0, 0, 0, .6) !important;
+    animation: 500ms linear infinite spinner-animation !important;
+
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+body {
+    background: #333;
+}
+
+/** page **/
+.cssloader {
+    padding-top: calc(10vh - 30px);
+}
+
+/** loader **/
+.sh1 {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 50px 0 0;
+    border-color: #d38740 transparent transparent transparent;
+    margin: 0 auto;
+    animation: shk1 1s ease-in-out infinite normal;
+}
+
+.sh2 {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 50px 50px;
+    border-color: transparent transparent #89288e transparent;
+    margin: -50px auto 0;
+    animation: shk2 1s ease-in-out infinite alternate;
+}
+
+/** animation starts here **/
+@keyframes shk1 {
+    0% {
+        transform: rotate(-360deg);
+    }
+
+    100% {}
+}
+
+@keyframes shk2 {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {}
+}
+
+.lt {
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    margin: 30px auto;
+    text-align: center;
+    font-weight: 100;
+    letter-spacing: 10px;
+}
+
+
+
+
+::ng-deep .mat-dialog-container {
+    box-shadow: 0px !important;
+    background: transparent !important;
+    color: transparent !important;
+    z-index: 1000000;
+}
+
+
+/*::ng-deep .cdk-overlay-container, .cdk-global-overlay-wrapper {
+       background-color: rgba(0, 0, 0, 0.35);
+      z-index: 1000000 !important;
+      height: 100vh;
+        position: fixed;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex; 
+  }*/
+/* 
+  .cdk-overlay-container{    display: flex;
+      height: 100vh;
+      position: fixed;
+      width: 100%;
+      justify-content: center;
+      align-items: center;} */
+
+::ng-deep .cdk-global-overlay-wrapper {
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 1000000;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}

@@ -1,0 +1,491 @@
+<app-submenu-list [ActiveMenu]='ActiveMenu'></app-submenu-list>
+<section class="main-wrapper prod-list-page">
+    <div class="l-container">
+        <div class="row col-12 mb-2">
+                <ul class="l-page-nav__list--icon">
+                    <li class="l-page-nav__list--icon-item"><a (click)="onClick(1)" [ngClass]="{'active': tab===1}">
+                            <i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <g fill="#d9dadf" fill-rule="nonzero">
+                                            <g>
+                                                <g>
+                                                    <g>
+                                                        <path
+                                                            d="M12.186 0L24 5.93v13.34L12.052 25.2 0 19.27V5.93L12.186 0zM1.5 8.218v10.135L12 23.518V12.66l-.006.004L1.5 8.218zm21-.001l-9 3.81V22.82l9-4.465V8.216zM6.748 4.297L1.702 6.754l10.293 4.298 4.437-1.851-9.683-4.904zm5.427-2.64L8.42 3.485l9.76 4.987 4.137-1.726-10.14-5.089z"
+                                                            transform="translate(-43 -279) translate(29 265) translate(14 6) translate(0 8)" />
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </i>
+                            <div class="txt">
+                                <span>BOOKING</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="l-page-nav__list--icon-item"><a (click)="onClick(2)" [ngClass]="{'active': tab===2}">
+                            <i><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="32" height="35" viewBox="0 0 32 35">
+                                    <defs>
+                                        <path id="vyjgc20cua"
+                                            d="M16 .5c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16S7.163.5 16 .5zm0 1.6C8.047 2.1 1.6 8.547 1.6 16.5S8.047 30.9 16 30.9s14.4-6.447 14.4-14.4S23.953 2.1 16 2.1z" />
+                                    </defs>
+                                    <g fill="none" fill-rule="evenodd">
+                                        <g>
+                                            <g>
+                                                <g>
+                                                    <g
+                                                        transform="translate(-524 -275) translate(524 273) translate(0 2.5) translate(0 .5)">
+                                                        <mask id="a2y1157qub" fill="#fff">
+                                                            <use xlink:href="#vyjgc20cua" />
+                                                        </mask>
+                                                        <use fill="#D9DADF" xlink:href="#vyjgc20cua" />
+                                                        <path fill="#0DC1F4" stroke="#EAEAF1" stroke-width="3"
+                                                            d="M15 17.5L39.087 4.319 15 -2.5z"
+                                                            mask="url(#a2y1157qub)" />
+                                                    </g>
+                                                    <g fill="#080C5C" fill-rule="nonzero">
+                                                        <path
+                                                            d="M13.798.26c-.082-.084-.195-.13-.312-.13H.594c-.243 0-.44.197-.44.44L.169 14c0 .135.062.263.168.346l1.599 1.274c.16.128.387.128.548 0l1.32-1.054 1.32 1.054c.16.126.385.126.545 0l1.32-1.054 1.32 1.054c.079.062.176.095.275.095.108.006.215-.028.3-.095l1.32-1.054 1.32 1.054c.16.128.387.128.547 0l1.6-1.27c.114-.079.185-.208.189-.347l.075-13.42c.001-.122-.048-.24-.137-.323zm-.818 13.527l-1.162.922-1.32-1.054c-.16-.126-.385-.126-.545 0l-1.32 1.054-1.32-1.054c-.078-.061-.175-.095-.275-.094-.1 0-.195.033-.273.094l-1.32 1.054-1.32-1.054c-.16-.126-.386-.126-.546 0L2.26 14.71l-1.161-.922L1.034 1.01h12.01l-.064 12.777z"
+                                                            transform="translate(-524 -275) translate(524 273) translate(0 2.5) translate(9 9.5)" />
+                                                        <path
+                                                            d="M2.024 2.974h3.124c.243 0 .44-.197.44-.44s-.197-.44-.44-.44H2.024c-.243 0-.44.197-.44.44s.197.44.44.44zM2.024 4.796h3.124c.243 0 .44-.197.44-.44s-.197-.44-.44-.44H2.024c-.243 0-.44.197-.44.44s.197.44.44.44zM8.815 4.796h3.124c.243 0 .44-.197.44-.44s-.197-.44-.44-.44H8.815c-.243 0-.44.197-.44.44s.197.44.44.44zM11.612 7.26H2.468c-.243 0-.44.197-.44.44s.197.44.44.44h9.144c.243 0 .44-.197.44-.44s-.197-.44-.44-.44zM2.468 10.01h7.652c.243 0 .44-.197.44-.44s-.197-.44-.44-.44H2.468c-.243 0-.44.197-.44.44s.197.44.44.44zM11.134 11H2.468c-.243 0-.44.197-.44.44s.197.44.44.44h8.666c.243 0 .44-.197.44-.44s-.197-.44-.44-.44z"
+                                                            transform="translate(-524 -275) translate(524 273) translate(0 2.5) translate(9 9.5)" />
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </i>
+                            <div class="txt"> <span>FINANCE</span></div>
+                        </a>
+                    </li>
+                    <li class="l-page-nav__list--icon-item"><a (click)="onClick(3)" [ngClass]="{'active': tab===3}">
+                        <i><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="32" height="35" viewBox="0 0 32 35">
+                                <defs>
+                                    <path id="vyjgc20cua"
+                                        d="M16 .5c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16S7.163.5 16 .5zm0 1.6C8.047 2.1 1.6 8.547 1.6 16.5S8.047 30.9 16 30.9s14.4-6.447 14.4-14.4S23.953 2.1 16 2.1z" />
+                                </defs>
+                                <g fill="none" fill-rule="evenodd">
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <g
+                                                    transform="translate(-524 -275) translate(524 273) translate(0 2.5) translate(0 .5)">
+                                                    <mask id="a2y1157qub" fill="#fff">
+                                                        <use xlink:href="#vyjgc20cua" />
+                                                    </mask>
+                                                    <use fill="#D9DADF" xlink:href="#vyjgc20cua" />
+                                                    <path fill="#0DC1F4" stroke="#EAEAF1" stroke-width="3"
+                                                        d="M15 17.5L39.087 4.319 15 -2.5z"
+                                                        mask="url(#a2y1157qub)" />
+                                                </g>
+                                                <g fill="#080C5C" fill-rule="nonzero">
+                                                    <path
+                                                        d="M13.798.26c-.082-.084-.195-.13-.312-.13H.594c-.243 0-.44.197-.44.44L.169 14c0 .135.062.263.168.346l1.599 1.274c.16.128.387.128.548 0l1.32-1.054 1.32 1.054c.16.126.385.126.545 0l1.32-1.054 1.32 1.054c.079.062.176.095.275.095.108.006.215-.028.3-.095l1.32-1.054 1.32 1.054c.16.128.387.128.547 0l1.6-1.27c.114-.079.185-.208.189-.347l.075-13.42c.001-.122-.048-.24-.137-.323zm-.818 13.527l-1.162.922-1.32-1.054c-.16-.126-.385-.126-.545 0l-1.32 1.054-1.32-1.054c-.078-.061-.175-.095-.275-.094-.1 0-.195.033-.273.094l-1.32 1.054-1.32-1.054c-.16-.126-.386-.126-.546 0L2.26 14.71l-1.161-.922L1.034 1.01h12.01l-.064 12.777z"
+                                                        transform="translate(-524 -275) translate(524 273) translate(0 2.5) translate(9 9.5)" />
+                                                    <path
+                                                        d="M2.024 2.974h3.124c.243 0 .44-.197.44-.44s-.197-.44-.44-.44H2.024c-.243 0-.44.197-.44.44s.197.44.44.44zM2.024 4.796h3.124c.243 0 .44-.197.44-.44s-.197-.44-.44-.44H2.024c-.243 0-.44.197-.44.44s.197.44.44.44zM8.815 4.796h3.124c.243 0 .44-.197.44-.44s-.197-.44-.44-.44H8.815c-.243 0-.44.197-.44.44s.197.44.44.44zM11.612 7.26H2.468c-.243 0-.44.197-.44.44s.197.44.44.44h9.144c.243 0 .44-.197.44-.44s-.197-.44-.44-.44zM2.468 10.01h7.652c.243 0 .44-.197.44-.44s-.197-.44-.44-.44H2.468c-.243 0-.44.197-.44.44s.197.44.44.44zM11.134 11H2.468c-.243 0-.44.197-.44.44s.197.44.44.44h8.666c.243 0 .44-.197.44-.44s-.197-.44-.44-.44z"
+                                                        transform="translate(-524 -275) translate(524 273) translate(0 2.5) translate(9 9.5)" />
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </i>
+                        <div class="txt"> <span>EGURU LEADS</span></div>
+                    </a>
+                </li>
+                </ul>
+        </div>
+        <div class="row">
+            <app-filter *ngIf="!isEGURU" #filterComponent [filterFields]="filterFields" (filterInput)="filterData($event)"
+            (excelDownloadEmit)="excelDownload()" [Filterarray]="Filterarray">
+            </app-filter>
+        </div>
+        
+        <div class="l-content w-100 p-0">
+            <div class="tbl-reports card-shadow bg-white h-100">
+                <div class="l-tbl-accordion overflow-auto">
+                    <div class="w-100 border-0 p-3">
+                        <div class="table-responsive">
+                            <table class="l-tbl" *ngIf="!isEGURU">
+                                <tr class="main-tr">
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center">
+                                            <span>Vehicle No</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Status</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Request Id</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Name</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Mobile</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>LOB</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>PPL</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>PL</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Dealer Name</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>City</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Source</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Medium</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Campaign</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Keyword</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Campaign Id</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Content</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Term</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Lead Created
+                                                Date</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Status Update
+                                            Date</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <ng-container *ngIf="leadList.length >0">
+                                    <tr *ngFor="let row of leadList" class="click-tr">
+                                        <td class="text-nowrap link">
+                                            <div class="text-nowrap link" (click)="openDetails(row)">
+                                                <a>{{ row?.vc}} </a>
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.opty_status }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.row_id }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.user?.first_name }} {{ row?.user?.last_name }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.user?.mobile_number }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.lob }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.ppl }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.pl }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.dealer_info?.division_name }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.city | titlecase }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.source }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.medium }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.campaign }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.keyword}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.campaign_id}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.content}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.term}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.created_date | date :'dd-MM-yyyy hh:mm a' }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.updated_date | date :'dd-MM-yyyy hh:mm a' }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                <ng-container *ngIf="leadList.length == 0">
+                                    <tr class="text-nowrap text-align-center">
+                                        No Data Found
+                                    </tr>
+                                </ng-container>
+
+                            </table>
+                            <table class="l-tbl" *ngIf="isEGURU">
+                                <tr class="main-tr">
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center">
+                                            <span>CRM Opportunity ID</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>CRM Opty Stage</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>FNI Opty Status</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>LOB</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>PPL</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>PL</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Quantity</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Dealer Code</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Dealer Name</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Dealer Location</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Dealer Region</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Dealer State</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Request Created Date</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>CO Created Date</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Last Updated Date</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <ng-container *ngIf="leadList.length >0">
+                                    <tr *ngFor="let row of leadList" class="click-tr">
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.crmOpportunityID }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.crmOptiStage }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.fniOptyStatus }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.lob }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.ppl }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.pl }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.quantity }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.dealerCode }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.dealerName }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.dealerLocation}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.dealerRegion}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.dealerState}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.creationDate | date :'dd-MM-yyyy hh:mm a' }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.crmC0CreatedDateTimeStamp | date :'dd-MM-yyyy hh:mm a' }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.crmLastUpdateDateTimeStamp | date :'dd-MM-yyyy hh:mm a' }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                <ng-container *ngIf="leadList.length == 0">
+                                    <tr class="text-nowrap text-align-center">
+                                        No Data Found
+                                    </tr>
+                                </ng-container>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="paging" style="margin-bottom: 40px;margin-top: 20px;">
+                <app-pagination [activePage]="currentPage" [totalRecords]="totalrecord"
+                    *ngIf="totalrecord>10; else lessThanTenRecord" [recordsPerPage]="noofrecordsperpage"
+                    (onPageChange)="pageChange($event)" [showrecords]="showRecords"></app-pagination>
+                <ng-template #lessThanTenRecord>
+                    <div class="row">
+                        <div class="col-3">
+                            <div *ngIf="totalrecord && totalrecord" class="info">Showing {{totalrecord}}/{{totalrecord}}
+                                results</div>
+                        </div>
+                        <div class="col-8"></div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #reportAllDownload let-d="dismiss">
+    <app-report-download-popup [data]="leadReport" [count]="count" [pageName]="pageName" [fileType]="fileTypeName">
+    </app-report-download-popup>
+</ng-template>
+<ng-template #leadListDetail let-d="dismiss3">
+    <app-lead-list-details [leadId]="leadId"></app-lead-list-details>
+</ng-template>
+<ng-container *ngIf="showLoader">
+    <div class="loader">
+        <div class="ng-spinner ng-spinner-icon">
+            <br />
+            <div class="sh1"></div>
+            <div class="sh2"></div>
+        </div>
+    </div>
+</ng-container>

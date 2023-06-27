@@ -1,0 +1,15 @@
+.image-container .delete {
+    position: absolute;
+    top: 20px;
+    right: 155px;
+    z-index: 100;
+    background-color: transparent;
+    padding: 5px 2px 2px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border: none;
+}

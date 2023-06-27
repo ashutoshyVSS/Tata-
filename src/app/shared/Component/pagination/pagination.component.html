@@ -1,0 +1,27 @@
+<div class="paging">
+    <div class="row">
+        <div class="col-3">
+            <div class="info">Showing {{showrecords}}/{{totalRecords}} results</div>
+        </div>
+        <div class="col-8 d-flex justify-content-center">
+            <ul class="paging__list">
+                <li  [attr.disabled]="activePage >= pageCount" (click)="onClickPage(activePage - 1)" class="paging__item prev"><a   > <span class="material-icons"> chevron_left </span>
+                        Prev</a></li>
+                <li *ngFor="let page of currentpages; trackBy: trackByFn" class="paging__item">
+                    <a (click)="onClickPage(page)" [class.active]="page === activePage">
+                    <ng-container *ngIf="page!=0">
+                        {{ page }}
+                    </ng-container>
+                    <ng-container *ngIf="page==0">
+                        <span class="block">...</span>
+                    </ng-container></a>
+                    <span *ngIf="page === activePage" class="sr-only">(activePage)</span>
+                </li>
+                <li (click)="onClickPage(activePage + 1)" [class.disabled]="activePage >= pageCount" class="paging__item next"><a >Next <span class="material-icons"> chevron_right
+                        </span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+

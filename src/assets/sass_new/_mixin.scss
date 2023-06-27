@@ -1,0 +1,27 @@
+@mixin transition($transition...) {
+     -moz-transition: $transition;
+     -o-transition: $transition;
+     -webkit-transition: $transition;
+     transition: $transition;
+     -ms-transition: $transition;
+}
+@mixin border-radius($tl:null, $tr:null, $br:null, $bl:null, $b: null, $bt: null, $bc: null) {
+     border: $b $bt $bc;
+     border-top-left-radius: $tl;
+     border-top-right-radius: $tr;
+     border-bottom-right-radius: $br;
+     border-bottom-left-radius: $bl;
+}
+// @mixin border-radius($top-left:null, $top-right:null, $bottom-right:null, $bottom-left:null){
+//      -webkit-border-radius: $top-left $top-right $bottom-right $bottom-left;
+//         -moz-border-radius: $top-left $top-right $bottom-right $bottom-left;
+//          -ms-border-radius: $top-left $top-right $bottom-right $bottom-left;
+//              border-radius: $top-left $top-right $bottom-right $bottom-left;  
+// }
+
+// @mixin card-box-shadow (){
+//     box-shadow: 0 0 7px 2px #dae1f9;
+// }
+// @mixin box-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $color: $default) {
+//     box-shadow: $x-axis $y-axis $blur $color;
+//   }

@@ -1,0 +1,123 @@
+<div class="container">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        style="float: right;background: transparent;border: none;color: #000;font-size: 25px;" (click)="goBack()">
+        <span aria-hidden="true">×</span>
+    </button>
+    <div class="m-4 p-3">
+        <form [formGroup]="testimonialForm" autocomplete="off">
+            <div class="row">
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Customer Name :<label class="ng-tns-c39-61"
+                            style="font-size: smaller; color:red; float: left;">*</label></div>
+                    <input style="width: 100%;" formControlName="name">
+                </div>
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Designation/organization/place (e.g. - Principal, Bombay
+                        school, Mumbai) :<label class="ng-tns-c39-61"
+                            style="font-size: smaller; color:red; float: left;">*</label></div>
+                    <input style="width: 100%;" formControlName="designation">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Sub Lob :</div>
+                    <ng-select [items]="subLobData" [clearable]="false" class="form-group" bindLabel="lob_name"
+                        placeholder="Select Type" bindValue="lob_name" (change)="GetLob($event)"
+                        formControlName="sub_lob"></ng-select>
+                </div>
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Lob :</div>
+                    <ng-select [items]="lobData" [clearable]="false" class="form-group" bindLabel="lob" (change)="GetPpl($event)"
+                        placeholder="Select Type" bindValue="lob" formControlName="lob_type"></ng-select>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">PPL :</div>
+                    <ng-select [items]="PplData" [clearable]="false" class="form-group" bindLabel="ppl" (change)="getModelData($event)"
+                        placeholder="Select Type" bindValue="ppl" formControlName="ppl_type"></ng-select>
+                </div>
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Model :</div>
+                    <ng-select [items]="ModelData" [clearable]="false" class="form-group" bindLabel="ModelData"
+                        placeholder="Select Type" bindValue="ModelData" formControlName="model"></ng-select>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Application :</div>
+                    <ng-select [items]="ApplicationData" [clearable]="false" class="form-group"
+                        bindLabel="ApplicationData" placeholder="Select Type" bindValue="ApplicationData"
+                        formControlName="application">
+                    </ng-select>
+                </div>
+                <div class="col-6" style="margin-top: 25px;">
+                    <input type="radio" id="youtube" name="Video_type" value="youtube"
+                        (change)="OnchageVideoType($event)" [checked]="VideoType == 'youtube'">
+                      <label for="youtube">Youtube Video</label>&nbsp;&nbsp;
+                    <input type="radio" id="file" name="Video_type" value="file" (change)="OnchageVideoType($event)"
+                        [checked]="VideoType == 'file'">
+                      <label for="file">Video File</label>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <button (click)="uploadFileInput.click()">
+                        <img src="./../../../../../assets/images/upload-icon.png" height="16px" width="16px"
+                            style="text-align: center;cursor: pointer;">
+                    </button>
+                    <input type="text" readonly formControlName="user_image" [(ngModel)]="myfilename"
+                        placeholder="Upload Profile Picture" />
+                    <input type="file" hidden #uploadFileInput accept="image/jpeg,image/jpg,image/png"
+                        (change)="onSelectImagefile($event)" />
+                    <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+                        <img [src]="imageURL" [alt]="" height="200" width="250">
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <div *ngIf="VideoType == 'youtube'">
+                        <textarea style="height: 50px;width: 100%;" formControlName="yt_url"></textarea>
+                        <iframe *ngIf="VideoType == 'youtube' && DisplayVideIframe" [src]='YoutubesafeURL' frameborder="0"
+                        allowfullscreen></iframe>
+                    </div>
+                    <div *ngIf="VideoType == 'file'">
+                        <video [autoplay]="'false'" [src]="url1" *ngIf="format==='video' && url1" height="200"
+                            controls></video>
+                        <br />
+                        <iframe *ngIf="Edit=='Yes'" style="width: fit-content; height: fit-content;" [src]='safeURL'
+                            frameborder="0" allowfullscreen></iframe>
+                        <input type="file" accept="viedo/mp4,video/x-m4v,video/*" (change)="onSelectFile($event)" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Testimonial :<label class="ng-tns-c39-61"
+                            style="font-size: smaller; color:red; float: left;">*</label></div>
+                    <textarea style="height: 100px;width: 100%;" formControlName="description"></textarea>
+                </div>
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label" style="color:red">Instruction :</div>
+                    1.Max Testimonial length should be 250 Characters.
+                    <br />2.Physical Video Size Should be less than 5 MB
+                    <br />3.Make Sure Youtube Video URL is Valid
+                    <br />4.Only 1 video can be added
+                </div>
+            </div>
+            <div class="row mt-2">
+                <button class="btn-primary" (click)="saveAndUpdate('add')" *ngIf="btnSave" style="width:15%">Submit</button>
+                <button class="btn-primary" *ngIf="btnUpdate" (click)="saveAndUpdate('edit')" style="width:15%">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+<ng-container *ngIf="showLoader">
+    <div class="loader">
+        <div class="ng-spinner ng-spinner-icon">
+            <br />
+            <div class="sh1"></div>
+            <div class="sh2"></div>
+        </div>
+    </div>
+</ng-container>

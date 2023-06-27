@@ -1,0 +1,122 @@
+<div class="container">
+    <div style="float: right">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: right;
+        background: transparent;
+        border: none;
+        color: #000;
+        font-size: 25px;" (click)="goBack()">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+
+    <div class="row mt-5">
+        <!-- <span class="d-flex mt-3">
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked
+                    (change)="onChange('vehicleBulkUpload')">Vehicle Bulk Upload
+                <label class="form-check-label" for="radio1"></label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2"
+                    (change)="onChange('vehicleImagesBulkUpload')">Vehicle Images
+                Bulk Upload
+                <label class="form-check-label" for="radio2"></label>
+            </div>
+        </span> -->
+
+        <div class="card shadow mb-5">
+            <h2 class="mt-2 heading">
+                <strong>Feature Bulk Upload</strong>
+            </h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="mb-5">
+                        <div class="col-8">
+                            <div class="p-5">
+                                <b style="color: red;">Instruction:</b>
+                                <br />1.Download Template from <a style="color: blue;cursor: pointer;"
+                                    href="./assets/Samples/feature_insert.xlsx">here</a>
+                                <br />2.Please filled all mandatory fields(marked with red color)
+                                <br />3.Upload the Excel File (Accept only Excel File)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-5 P-5">
+                        <span class="d-flex" style="margin-top: 95px;">
+                            <label>
+                                <input #inputFile type="file" (change)="SelectDocumentFiles($event)"
+                                    style="display:none" />
+                                <a color="primary" style="background: #0d6efd;
+                                color: white;
+                                padding: 8px;
+                                border-radius: 5px;">
+                                    Upload
+                                </a>
+                            </label>
+                            <p class="ml-3" style="color:blue; margin-left: 18px;"> <a
+                                    style="color: blue;cursor: pointer;"
+                                    href="./assets/Samples/feature_insert.xlsx">Download Template</a>
+                            </p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow mb-5">
+            <h2 class="mt-2 heading">
+                <strong>Feature Images Bulk Upload</strong>
+            </h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="mb-5">
+                        <div class="col-8">
+                            <div class="p-5">
+                                <b style="color: red;">Instruction:</b>
+                                <br />1.Download Zip file format <a style="color: blue;"
+                                    href="./assets/Sample/bulk_Img_Upload.zip">here</a>
+                                    <br />2.Feature image size should not be more than 200 KB
+                                    <br />3.For Any VC folder, folder Size should not be more than 1 MB
+                                    <br /> (Zip folder allowable size with multiple VC folders is 50
+                                    MB)
+                                    <br />4.For arranging feature images in sequence,
+                                    <br />Image name should PPL name + number(from 1 to 4) like TATA ACE_3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-5 P-5">
+                      <span class="d-flex" style="margin-top: 95px;">
+                        <label>
+                            <input #inputImagesFile type="file" (change)="SelectImageDocumentFiles($event)"
+                                style="display:none" />
+                            <a color="primary" style="background: #0d6efd;
+                            color: white;
+                            padding: 8px;
+                            border-radius: 5px;">
+                                Upload
+                            </a>
+                        </label>
+                        <p class="ml-3" style="color:blue; margin-left: 18px;"> <a
+                                style="color: blue;cursor: pointer;"
+                                href="./assets/Sample/bulk_Img_Upload.zip">Download Template</a>
+                        </p>
+                    </span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <ng-container *ngIf="showLoader">
+        <div class="loader">
+            <div class="ng-spinner ng-spinner-icon">
+                <br />
+                <div class="sh1"></div>
+                <div class="sh2"></div>
+            </div>
+        </div>
+    </ng-container>

@@ -1,0 +1,110 @@
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.marker {
+  position: absolute;
+  cursor: pointer;
+
+  &::before {
+      position: absolute;
+      content: "";
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      transform: translate(-30%, -30%);
+      background: rgba(217, 217, 217, 0.3);
+      border: 2px solid #FFFFFF;
+  }
+
+  &::after {
+      position: absolute;
+      content: "";
+      background-color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transform: translate(-20%, -20%);
+      left: 0;
+      top: 0;
+  }
+
+  span {
+      &.pointer {
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          background-color: #307FE2;
+          border: 1px solid #fff;
+          border-radius: 50%;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          z-index: 10;
+          transition: .3s ease-in-out;
+      }
+
+  }
+
+  span {
+      &.marker-tooltip {
+          padding: 8px 17px;
+          display: inline-block;
+          background-color: #307FE2;
+          color: #fff;
+          position: absolute;
+          left: 42px;
+          top: -4px;
+          min-width: 190px;
+
+          opacity: 0;
+          visibility: hidden;
+          transition: all .3s ease-in-out;
+          &::before {
+              position: absolute;
+              content: "";
+              background-color: #ced4da;
+              height: 2px;
+              left: 100%;
+              z-index: 0;
+              width: calc(100vw - 90vw);
+              top: 18px;
+          }
+          &::after {
+              position: absolute;
+              content: "";
+              background-color: #ced4da;
+              height: calc(100vw - 90vw);
+              right: calc(100vw - 110vw);
+              z-index: 0;
+              width: 2px;
+              bottom: 16px;
+          }
+
+      }
+  }
+
+  &:hover {
+      &::before {
+          border-color: #307FE2;
+      }
+
+      span {
+          &.pointer {
+              width: 18px;
+              height: 18px;
+              transform: translate(3px, 3px);
+          }
+
+      }
+
+      span {
+          &.marker-tooltip {
+              opacity: 1;
+              visibility: visible;
+          }
+
+      }
+
+  }
+
+}

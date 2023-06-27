@@ -1,0 +1,23 @@
+<div>
+    <div class="row">
+        <div class="col-10">
+        </div>
+        <div class="col-2">
+                <div (click)="closeModal()" type="button" style="float: right;padding: 10px;font-size: large"><i class="fa fa-times"></i>
+                </div>
+        </div>
+    </div>
+        <div style="text-align: center; margin-top: 40px;">
+      
+
+        <div class="spinner-grow spinner-color" style="width: 5rem; height: 5rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div style="margin-top: 20px;text-align: center;">
+        Please wait while the report is downloading...
+    </div>
+    <div style="margin-top: 20px;text-align: center;margin-bottom: 30px;">
+       <span style="color: red;">{{pendingcount}}/{{count}}</span>
+    </div>
+</div>

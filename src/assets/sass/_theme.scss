@@ -1,0 +1,32 @@
+/*=============================
+        5.    T H E M E
+===============================*/  
+
+/*========= GRID BLOCK ========*/    
+$columnCount:12 !default; 
+
+.grid{float: left; width: 100%;
+        &__row{float: left; width:calc(100% + 30px); margin-left: -15px; }      
+        &__item{float: left; padding:0 15px;} 
+
+        @for $i from 1 through $columnCount{
+                &__col-#{$i}{@extend %col-#{$i};}	
+        }
+
+        @for $i from 1 through $columnCount{
+                &__offset-#{$i}{@extend %offset-#{$i};}
+        }
+
+        /*========= GRID RESPONSIVE ========*/ 
+        @for $i from 1 through $columnCount{
+                %col-#{$i}{float:left; width:100%;
+                        @media(min-width:576px){width:percentage($i/$columnCount);} 		
+                }
+                %offset-#{$i}{margin-left:percentage($i/$columnCount);}
+        } 
+}
+
+
+
+
+

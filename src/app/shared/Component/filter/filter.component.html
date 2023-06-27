@@ -1,0 +1,511 @@
+<div class="justify-content-end mb-4 float-left">
+    <ul class="tags__list">
+        <li *ngFor="let Filterrow of Filterarray; let i=index"><a>{{Filterrow.Value}} <img
+                    (click)="onRemoveFilter(Filterrow)"
+                    src="assets/images/tag-close.svg" /></a></li>
+    </ul>
+</div>
+<div class="search-order-id float-right popup-order-tracking">
+    <ul class="tags__list">
+        <span (click)="refreshPage()" class="material-icons icon-search cursor refresh">refresh </span>
+    </ul>
+    <input type="text" *ngIf="filterFields.leadSearch" appAppInputRestriction="" class="textfield"
+        placeholder="Search by request number" (paste)="removeNewlines($event,'requestId')"
+        (keyup.enter)="search('requestId')" [formControl]="AllFilters.controls['requestId']">
+    <span *ngIf="filterFields.leadSearch" (click)="search('requestId')" class="material-icons icon-search cursor">search
+    </span>
+    <input type="text" *ngIf="filterFields.customerSearch || filterFields.callBackSearch || filterFields.referralSearch || filterFields.testDriveSearch" appAppInputRestriction="" class="textfield"
+        placeholder="Search by mobile number" (paste)="removeNewlines($event,'mobileNumber')"
+        (keyup.enter)="search('mobileNumber')" [formControl]="AllFilters.controls['mobileNumber']">
+    <span *ngIf="filterFields.customerSearch" (click)="search('mobileNumber')"
+        class="material-icons icon-search cursor">search
+    </span>
+    <input type="text" *ngIf="filterFields.vehicleSearch" appAppInputRestriction="" class="textfield"
+        placeholder="Search by vehicle number" (paste)="removeNewlines($event,'vehicleNumber')"
+        (keyup.enter)="search('vehicleNumber')" [formControl]="AllFilters.controls['vehicleNumber']">
+    <span *ngIf="filterFields.vehicleSearch" (click)="search('vehicleNumber')"
+        class="material-icons icon-search cursor">search
+    </span>
+    <input type="text" *ngIf="filterFields.blogTitle" appAppInputRestriction="" class="textfield"
+        placeholder="Search by vehicle number" (paste)="removeNewlines($event,'blogTitle')"
+        (keyup.enter)="search('blogTitle')" [formControl]="AllFilters.controls['blogTitle']">
+    <span *ngIf="filterFields.blogTitle" (click)="search('blogTitle')"
+        class="material-icons icon-search cursor">search
+    </span>
+    
+    <div class="popup-order-tracking__aside" ngbDropdown #myDrop="ngbDropdown" placement="bottom-right">
+        <button class="btn-filter" id="filterPopup" ngbDropdownToggle><img src="assets/images/filter.svg"
+                alt="" /></button>
+        <div ngbDropdownMenu aria-labelledby="filterPopup" class="filter-popup">
+            <div class="arrow"></div>
+            <form [formGroup]="AllFilters">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col border-right">
+                            <li class="sidebar-cards__item" *ngIf="filterFields.date">
+                                <ul class="sidebar-cards__chk-list mt-4">
+                                    <li class="sidebar-cards__chk-list-item chkbox">
+                                        <input value="today" name="dateType" formControlName="dateType" class="A"
+                                            type="radio" id="aa" (change)="onDateUpdate('today')">
+                                        <label for="aa"> Today</label>
+                                    </li><br>
+                                    <li class="sidebar-cards__chk-list-item chkbox">
+                                        <input value="week" name="dateType" formControlName="dateType" class="A"
+                                            type="radio" id="bb" (change)="onDateUpdate('week')">
+                                        <label for="bb"> Last 7 days</label>
+                                    </li><br>
+                                    <li class="sidebar-cards__chk-list-item chkbox">
+                                        <input value="month" name="dateType" formControlName="dateType" class="A"
+                                            type="radio" id="cc" (change)="onDateUpdate('month')">
+                                        <label for="cc">Last 30 days</label>
+
+                                    </li><br>
+                                    <li class="sidebar-cards__chk-list-item chkbox">
+                                        <input value="custom" formControlName="dateType"
+                                            (change)="onDateUpdate('custom')" name="dateType" type="radio" id="dd">
+                                        <label for="dd">Custom</label>
+                                    </li>
+
+                                    <li class="sidebar-cards__chk-list-item" *ngIf="ShowCustom"
+                                        style="margin-top: 1rem;">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group m-0 calendar">
+                                                    <div class="input-group">
+                                                        <input class="form-control" formControlName="from_date"
+                                                            [readonly]="true" placeholder="dd-mm-yyyy" name="dp"
+                                                            (ngModelChange)="getDatepickerChangeVal('from_date')"
+                                                            ngbDatepicker #d="ngbDatepicker" style="padding: 0.3rem;">
+                                                        <div class="input-group-append">
+                                                            <button (click)="d.toggle()"
+                                                                class="btn btn-outline-secondary calendar"
+                                                                type="button">
+                                                                <span class="material-icons">
+                                                                    calendar_today
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group m-0">
+                                                    <div class="input-group calendar">
+                                                        <input class="form-control" formControlName='to_date'
+                                                            [readonly]="true" placeholder="yyyy-mm-dd" name="dp"
+                                                            (ngModelChange)="getDatepickerChangeVal('to_date')"
+                                                            ngbDatepicker #d1="ngbDatepicker" style="padding: 0.3rem;">
+                                                        <div class="input-group-append1">
+                                                            <button (click)="d1.toggle()"
+                                                                class="btn btn-outline-secondary calendar"
+                                                                type="button">
+                                                                <span class="material-icons">
+                                                                    calendar_today
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li *ngIf="filterFields.requestId">
+                                <div class="srch-box">
+                                    <label>Request Id</label><br />
+                                    <input [formControl]="AllFilters.controls['requestId']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'requestId')"
+                                        placeholder="Enter Request Id" class="textfield " id="inputPassword">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.referralSource">
+                                <div class="srch-box">
+                                    <label>Source</label><br />
+                                    <input [formControl]="AllFilters.controls['source']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'source')" placeholder="Enter Source" class="textfield " id="source">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.referralMedium">
+                                <div class="srch-box">
+                                    <label>Medium</label><br />
+                                    <input [formControl]="AllFilters.controls['medium']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'medium')" placeholder="Enter Medium" class="textfield " id="medium">
+                                </div>
+                            </li>
+                            <ng-container *ngIf="filterFields.registrationRole && filterFields.registrationPosition && filterFields.registrationStatus">
+                                <li *ngIf="filterFields.registrationRole">
+                                    <div class="srch-box">
+                                        <label>Role</label><br />
+                                        <ng-select [items]="roleData" [clearable]="false" class="form-group" bindLabel="role_name" placeholder="Select Role" bindValue="role_id" style="width:100%" formControlName="registrationRole" (change)="getPosition($event)">
+                                        </ng-select>
+                                    </div>
+                                </li>
+                                <li *ngIf="filterFields.registrationPosition">
+                                    <div class="srch-box">
+                                        <label>Position</label><br />
+                                        <ng-select [items]="positionData" [clearable]="false" class="form-group" bindLabel="position_name" placeholder="Select Position" bindValue="position_id" style="width:100%" formControlName="registrationPosition" (change)="getPositionName($event)">
+                                        </ng-select>
+                                    </div>
+                                </li>
+                                <li *ngIf="filterFields.registrationStatus">
+                                    <div class="srch-box">
+                                        <label>Status</label><br />
+                                        <ng-select [items]="bannerStatus" [clearable]="false" formControlName="registrationStatus" class="form-group" bindLabel="name" placeholder="Select Status" bindValue="value" >
+                                </ng-select>
+                                    </div>
+                                </li>
+                            </ng-container>
+                            <li *ngIf="filterFields.blogTitle">
+                                <div class="srch-box">
+                                    <label>Title</label><br />
+                                    <input [formControl]="AllFilters.controls['blogTitle']" type="text"
+                                    appAppInputRestriction="" (paste)="removeNewlines($event,'blogTitle')" placeholder="Enter Title" class="textfield " id="blogTitle">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.blogTags">
+                                <div class="srch-box">
+                                    <label>Tags</label><br />
+                                    <ng-select [items]="tagsData" [clearable]="false" formControlName="blogTags" [multiple]="true"
+                                    class="form-group" bindLabel="name" placeholder="Select Tags" bindValue="name">
+                                </ng-select>
+                                </div>
+                            </li>
+                            
+                            <li *ngIf="filterFields.blogTags">
+                                <div class="srch-box">
+                                    <label>Type</label><br />
+                                    <ng-select [multiple]="false" [items]="blogType" [clearable]="false" formControlName="blogType" class="form-group" bindLabel="name" placeholder="Select Tags" bindValue="name">
+                                </ng-select>
+                                </div>
+                            </li>
+                            <!-- <li *ngIf="filterFields.party_type">
+                                <div class="srch-box">
+                                    <label>Type</label><br />
+                                    <ng-select  [items]="typeList" [clearable]="false" formControlName="party_type"
+                                        class="form-group" bindLabel="party_type_name" (change)="onChangeType($event)" placeholder="Select Type"
+                                        bindValue="party_type_name">
+                                    </ng-select>
+                                </div>
+                            </li> -->
+                            
+                        </div>
+                        <div class="col border-right"  *ngIf="!filterFields.registrationRole && !filterFields.registrationPosition && !filterFields.blogStatus && !filterFields.blogType && !filterFields.blogTags && !filterFields.blogTitle">
+                            <li *ngIf="filterFields.LOB">
+                                <div class="mb-3">
+                                    <label>LOB</label><br />
+                                    <ng-select [items]="lobData" [clearable]="false" formControlName="LOB"
+                                        class="form-group" bindLabel="lob" (change)="onChangeType($event,'LOB')"
+                                        placeholder="Select LOB" bindValue="lob">
+                                    </ng-select>
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.PPL">
+                                <div class="srch-box">
+                                    <label>PPL</label><br />
+                                    <ng-select [items]="PPLData" [clearable]="false" formControlName="PPL"
+                                        class="form-group" bindLabel="lob" (change)="onChangeType($event,'PPL')"
+                                        placeholder="Select PPL" bindValue="lob">
+                                    </ng-select>
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.PL">
+                                <div class="srch-box">
+                                    <label>PL</label><br />
+                                    <ng-select [items]="PLData" [clearable]="false" formControlName="PL"
+                                        class="form-group" bindLabel="lob" (change)="onChangeType($event,'PL')"
+                                        placeholder="Select PL" bindValue="lob">
+                                    </ng-select>
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.priceLessThan">
+                                <div class="srch-box">
+                                    <label>Price Less Than</label><br />
+                                    <input [formControl]="AllFilters.controls['priceLessThan']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'priceLessThan')" (keypress)="numberOnly($event)" maxlength="50"
+                                        placeholder="Enter Price Less Than" class="textfield " id="priceLessThan">
+                                </div>
+                            </li>
+                            <!--  -->
+                            <li *ngIf="filterFields.referralCampaign">
+                                <div class="srch-box">
+                                    <label>Campaign</label><br />
+                                    <input [formControl]="AllFilters.controls['campaign']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'campaign')" placeholder="Enter Campaign" class="textfield " id="campaign">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.referralKeyword">
+                                <div class="srch-box">
+                                    <label>Keyword</label><br />
+                                    <input [formControl]="AllFilters.controls['keyword']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'keyword')" placeholder="Enter Keyword" class="textfield " id="keyword">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.referralCampaignId">
+                                <div class="srch-box">
+                                    <label>Campaign ID</label><br />
+                                    <input [formControl]="AllFilters.controls['campaignId']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'campaignId')" placeholder="Enter Campaign ID" class="textfield " id="campaignId">
+                                </div>
+                            </li>
+                            <!-- <li *ngIf="filterFields.model">
+                                <div class="srch-box">
+                                    <label>Model</label><br />
+                                    <input [formControl]="AllFilters.controls['model']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'model')"
+                                        placeholder="Enter Model" class="textfield " id="model">
+                                </div>
+                            </li> -->
+                            <li *ngIf="filterFields.vcNumber">
+                                <div class="srch-box">
+                                    <label>VC Number</label><br />
+                                    <input [formControl]="AllFilters.controls['vcNumber']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'vcNumber')"
+                                        placeholder="Enter VC Number" class="textfield " id="vcNumber">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.customerName">
+                                <div class="srch-box">
+                                    <label>Customer Name</label><br />
+                                    <input [formControl]="AllFilters.controls['customerName']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'customerName')"
+                                        placeholder="Enter Customer Name" class="textfield " id="customerName">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.createdby">
+                                <div class="srch-box">
+                                    <label>Created By (Username)</label><br />
+                                    <input [formControl]="AllFilters.controls['createdby']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'createdby')"
+                                        placeholder="Created By" class="textfield " id="createdby">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.bannerstatus">
+                                <div class="srch-box">
+                                    <label>Status</label><br />
+                                    <ng-select [items]="bannerStatus" [clearable]="false" formControlName="bannerStatus"
+                                    class="form-group" bindLabel="name" placeholder="Select Status" bindValue="value">
+                                </ng-select>
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.bannerPriority">
+                                <div class="srch-box">
+                                    <label>Priority</label><br />
+                                    <ng-select [items]="bannerPriority" [clearable]="false" formControlName="bannerPriority"
+                                    class="form-group" bindLabel="name" placeholder="Select Priority" bindValue="value">
+                                </ng-select>
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.bannerPages">
+                                <div class="srch-box">
+                                    <label>Pages</label><br />
+                                    <ng-select [items]="bannerPage" [clearable]="false" formControlName="bannerPages"
+                                    class="form-group" bindLabel="name" placeholder="Select Pages" bindValue="name">
+                                </ng-select>
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.mobileNumber">
+                                <div class="srch-box">
+                                    <label>Mobile Number</label><br />
+                                    <input [formControl]="AllFilters.controls['mobileNumber']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'mobileNumber')"
+                                        placeholder="Enter Mobile Number" class="textfield " id="mobileNumber">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.pincode">
+                                <div class="srch-box">
+                                    <label>Pincode</label><br />
+                                    <input [formControl]="AllFilters.controls['pincode']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'pincode')"
+                                        placeholder="Enter Pincode" class="textfield " id="pincode">
+                                </div>
+                            </li>
+
+                        </div>
+                        <div class="col border-right">
+                            <li *ngIf="filterFields.referralContent">
+                                <div class="srch-box">
+                                    <label>Content</label><br />
+                                    <input [formControl]="AllFilters.controls['content']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'content')" placeholder="Enter Content" class="textfield " id="content">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.referralTerm">
+                                <div class="srch-box">
+                                    <label>Term</label><br />
+                                    <input [formControl]="AllFilters.controls['term']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'term')" placeholder="Enter Term" class="textfield " id="term">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.vehicleNumber">
+                                <div class="srch-box">
+                                    <label>Vehicle Number</label><br />
+                                    <input [formControl]="AllFilters.controls['vehicleNumber']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'vehicleNumber')"
+                                        placeholder="Enter Vehicle Number" class="textfield " id="vehicleNumber">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.model">
+                                <div class="srch-box">
+                                    <label>Model</label><br />
+                                    <input [formControl]="AllFilters.controls['model']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'model')"
+                                        placeholder="Enter Model" class="textfield " id="model">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.city">
+                                <div class="srch-box">
+                                    <label>City</label><br />
+                                    <input [formControl]="AllFilters.controls['city']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'city')"
+                                        placeholder="Enter City" class="textfield " id="city">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.product || filterFields.callBackProduct">
+                                <div class="srch-box">
+                                    <label>Product</label><br />
+                                    <ng-select [items]="productList" [clearable]="false" formControlName="product"
+                                        class="form-group" bindLabel="name"
+                                        placeholder="Select Product" bindValue="name">
+                                    </ng-select>
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.testDriveModel">
+                                <div class="srch-box">
+                                    <label>Model</label><br />
+                                    <ng-select [items]="modelList" [clearable]="false" formControlName="testDriveModel"
+                                        class="form-group" bindLabel="name" placeholder="Select Model" bindValue="name">
+                                    </ng-select>
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.leadReferenceId">
+                                <div class="srch-box">
+                                    <label>Lead Reference ID</label><br />
+                                    <input [formControl]="AllFilters.controls['leadReferenceId']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'leadReferenceId')" placeholder="Enter leadReferenceId" class="textfield " id="leadReferenceId">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.testDriveStatus || filterFields.callBackStatus || filterFields.orderStatus || filterFields.vehicleStatus">
+                                <div class="srch-box">
+                                    <label>Status</label><br />
+                                    <ng-select [items]="statusData" [clearable]="false" formControlName="status"
+                                        class="form-group" bindLabel="name" placeholder="Select Status" bindValue="id">
+                                    </ng-select>
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.callBackActionType">
+                                <div class="srch-box">
+                                    <label>Action Type</label><br />
+                                    <ng-select [items]="callBackActionType" [clearable]="false" formControlName="callBackActionType"
+                                        class="form-group" bindLabel="name" placeholder="Select Action Type" bindValue="name">
+                                    </ng-select>
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.title">
+                                <div class="srch-box">
+                                    <label>Title</label><br />
+                                    <input [formControl]="AllFilters.controls['title']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'title')"
+                                        placeholder="Enter VC Number" class="textfield " id="title">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.rating">
+                                <div class="srch-box">
+                                    <label>Rating</label><br />
+                                    <input [formControl]="AllFilters.controls['rating']" type="text"
+                                    appAppInputRestriction="" (paste)="removeNewlines($event,'rating')"
+                                    placeholder="Enter VC Number" class="textfield " id="rating">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.designation">
+                                <div class="srch-box">
+                                    <label>Designation</label><br />
+                                    <input [formControl]="AllFilters.controls['designation']" type="text"
+                                        appAppInputRestriction="" (paste)="removeNewlines($event,'designation')"
+                                        placeholder="Enter Designation" class="textfield " id="vcNumber">
+                                </div>
+                            </li>
+                            <li *ngIf="filterFields.bannerSubLob">
+                                <div class="srch-box">
+                                    <label>Sub Lob</label><br />
+                                    <ng-select [items]="bannerSubLob" [clearable]="false" formControlName="bannerSubLob"
+                                        class="form-group" bindLabel="name" placeholder="Select Sub lob" bindValue="name" (change)="OnchageSubLob($event)">
+                                    </ng-select>
+                                </div>
+                            </li>
+                                <li *ngIf="filterFields.bannerLob">
+                                    <div class="srch-box">
+                                        <label>Lob</label><br />
+                                        <ng-select [items]="bannerlobData" [clearable]="false" formControlName="bannerLob"
+                                            class="form-group" bindLabel="lob" placeholder="Select lob" bindValue="lob">
+                                        </ng-select>
+                                    </div>
+                                </li>
+
+                                <li *ngIf="filterFields.registrationFName">
+                                    <div class="srch-box">
+                                        <label>First Name</label><br />
+                                        <input [formControl]="AllFilters.controls['registrationFName']" type="text" appAppInputRestriction="" (paste)="removeNewlines($event,'FName')"
+                                        placeholder="Enter First Name" class="textfield " id="FName">
+                                    </div>
+                                </li>
+                                <li *ngIf="filterFields.registrationLName">
+                                    <div class="srch-box">
+                                        <label>Last Name</label><br />
+                                        <input [formControl]="AllFilters.controls['registrationLName']" type="text" appAppInputRestriction="" (paste)="removeNewlines($event,'LName')"
+                                        placeholder="Enter Last Name" class="textfield " id="LName">
+                                    </div>
+                                </li>
+                                <li *ngIf="filterFields.registrationUName">
+                                    <div class="srch-box">
+                                        <label>User Name</label><br />
+                                        <input [formControl]="AllFilters.controls['registrationUName']" type="text" appAppInputRestriction="" (paste)="removeNewlines($event,'UName')"
+                                        placeholder="Enter User Name" class="textfield " id="UName">
+                                    </div>
+                                </li>
+                                <li *ngIf="filterFields.blogStatus">
+                                    <div class="srch-box">
+                                        <label>Status</label><br />
+                                        <ng-select [items]="blogStatusData" [clearable]="false" formControlName="blogStatus"
+                                        class="form-group" bindLabel="name" placeholder="Select Status" bindValue="value">
+                                    </ng-select>
+                                    </div>
+                                </li>
+                                <li *ngIf="filterFields.blogTypeofBlog">
+                                    <div class="srch-box">
+                                        <label>Type of Blogs</label><br />
+                                        <ng-select [items]="blogTypeofBlogData" [clearable]="false" formControlName="blogTypeofBlog"
+                                        class="form-group" bindLabel="name" placeholder="Select Blogs Type" bindValue="value">
+                                    </ng-select>
+                                    </div>
+                                </li>
+                                
+                                <li *ngIf="filterFields.blogPriority">
+                                    <div class="srch-box">
+                                        <label>Priority</label><br />
+                                        <ng-select [items]="priorityData" [clearable]="false" formControlName="blogPriority"
+                                        class="form-group" bindLabel="name" placeholder="Select Priority" bindValue="value">
+                                    </ng-select>
+                                    </div>
+                                </li>
+                                <li>
+                                <div class="srch-box">
+                                    <button class="btn btn-outline-primary"
+                                        (click)="search('')">Search</button>&nbsp;&nbsp;
+                                    <button class="btn btn-outline-primary" (click)="resetFilter()">Reset</button>
+                                </div>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <ul class="tags__list" *ngIf="filterFields.excelDownload" (click)="excelDownload()" fxFlex="30"
+        style="color: darkolivegreen; font-size: smaller; cursor: hand;cursor: pointer;" matTooltip="Export to Excel">
+        <span class='fa-stack fa-lg'>
+            <i class='fas fa-file-excel fa-pull-right fa-2x'></i>
+
+        </span>
+    </ul>
+</div>

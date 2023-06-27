@@ -1,0 +1,215 @@
+<!-- <app-submenu-list [ActiveMenu]='ActiveMenu'></app-submenu-list> -->
+<section class="main-wrapper prod-list-page">
+    <div class="l-container">
+        <button class="closeDel btnClass" style="margin-bottom: 9px; float: left; margin-right: 9px;"
+            (click)="openPopup('ADD','')"><span _ngcontent-hlk-c181="" class="mat-button-wrapper">ADD VEHICLE</span>
+            <div _ngcontent-hlk-c181="" matripple="" class="mat-button-ripple mat-ripple"></div>
+            <div _ngcontent-hlk-c181="" class="mat-button-focus-overlay"></div>
+        </button>
+        <button class="closeDel  btnClass" style="margin-bottom: 9px; float: left; margin-right: 9px;"
+            (click)="openPopup('BULK','')"><span _ngcontent-hlk-c181="" class="mat-button-wrapper">Bulk Upload</span>
+            <div _ngcontent-hlk-c181="" matripple="" class="mat-button-ripple mat-ripple"></div>
+            <div _ngcontent-hlk-c181="" class="mat-button-focus-overlay"></div>
+        </button>
+        <app-filter #filterComponent [filterFields]="filterFields" (filterInput)="filterData($event)"
+            [Filterarray]="Filterarray">
+        </app-filter>
+        <div class="l-content w-100 p-0">
+            <div class="tbl-reports card-shadow bg-white h-100">
+                <div class="l-tbl-accordion overflow-auto">
+                    <div class="w-100 border-0 p-3">
+                        <div class="table-responsive">
+                            <table class="l-tbl">
+                                <tr class="main-tr">
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>VC. No.</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Action</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>LOB</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>PPL</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>PL</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Model</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Price</span>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center">
+                                            <span>Status</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Test Drive</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Created Date</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Modify Date</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Created By</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Home Brand</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>New Launch</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"> <span>Popular</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <ng-container *ngIf="vehicleList.length >0">
+                                    <tr *ngFor="let row of vehicleList" class="click-tr">
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap link" (click)="openPopup('ADD',row)">
+                                                <a *ngIf="checkstatus(row.status)"
+                                                    style=" text-decoration-line: underline; color: blue;"
+                                                    routerLinkActive="active">
+                                                    {{ row?.vehicle_number }}</a>
+
+                                                <a *ngIf="!checkstatus(row.status)">
+                                                    {{ row?.vehicle_number }}</a>
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                <button *ngIf="row.status==='DISAPPROVED'"
+                                                    class="btn-primary publishbtn"
+                                                    (click)="Approve(row)">Publish</button>
+                                                <button *ngIf="row.status==='APPROVED'" class="btn-danger unpublishBtn"
+                                                    (click)="DeApprove(row)">Un-publish</button>
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.lob }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.ppl}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.pl }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.model}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.price_range | number}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.status}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.test_drive ? 'Yes' : 'No'}}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.created_date | date :'dd-MM-yyyy hh:mm a' }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.updated_date | date :'dd-MM-yyyy hh:mm a' }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <div class="text-nowrap">
+                                                {{ row?.created_by_username }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <button *ngIf="!row.is_home_brand" class="btn-primary publishbtn" (click)="updateVehicleList('active',row,'home')">Active</button>
+                                            <button *ngIf="row.is_home_brand" class="btn-danger unpublishBtn" (click)="updateVehicleList('in_active',row,'home')">Inactive</button>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <button *ngIf="!row.is_new_launch" class="btn-primary publishbtn" (click)="updateVehicleList('active',row,'newLaunch')">Active</button>
+                                            <button *ngIf="row.is_new_launch" class="btn-danger unpublishBtn" (click)="updateVehicleList('in_active',row,'newLaunch')">Inactive</button>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <button *ngIf="!row.is_popular" class="btn-primary publishbtn" (click)="updateVehicleList('active',row,'popular')">Active</button>
+                                            <button *ngIf="row.is_popular" class="btn-danger unpublishBtn" (click)="updateVehicleList('in_active',row,'popular')">Inactive</button>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                <ng-container *ngIf="vehicleList.length == 0">
+                                    <tr class="text-nowrap text-align-center">
+                                        No Data Found
+                                    </tr>
+                                </ng-container>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="paging" style="margin-bottom: 40px;margin-top: 20px;">
+                <app-pagination [activePage]="currentPage" [totalRecords]="totalrecord"
+                    *ngIf="totalrecord>10; else lessThanTenRecord" [recordsPerPage]="noofrecordsperpage"
+                    (onPageChange)="pageChange($event,true)" [showrecords]="showRecords"></app-pagination>
+                <ng-template #lessThanTenRecord>
+                    <div class="row">
+                        <div class="col-3">
+                            <div *ngIf="totalrecord && totalrecord" class="info">Showing {{totalrecord}}/{{totalrecord}}
+                                results</div>
+                        </div>
+                        <div class="col-8"></div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #vehicleDetail let-d="dismiss3">
+    <app-vehicle-details [data]="rowData"></app-vehicle-details>
+</ng-template>
+<ng-template #bulkUpload let-d="dismiss4">
+    <app-vehicle-bulk-upload></app-vehicle-bulk-upload>
+</ng-template>
+<ng-container *ngIf="showLoader">
+    <div class="loader">
+        <div class="ng-spinner ng-spinner-icon">
+            <br />
+            <div class="sh1"></div>
+            <div class="sh2"></div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,124 @@
+<div class="container">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        style="float: right;background: transparent;border: none;color: #000;font-size: 25px;" (click)="goBack()">
+        <span aria-hidden="true">×</span>
+    </button>
+    <div class="m-4 p-3">
+        <form [formGroup]="bannerForm" autocomplete="off">
+            <div class="row">
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Title :<label class="ng-tns-c39-61"
+                            style="font-size: smaller; color:red; float: left;">*</label></div>
+                    <input style="width: 100%;" formControlName="title">
+                </div>
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Priority :</div>
+                        <ng-select [items]="bannerPriority" [clearable]="false" class="form-group" bindLabel="name" placeholder="Select Priority" bindValue="value" formControlName="priority"></ng-select>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">From Date :<label class="ng-tns-c39-61"
+                            style="font-size: smaller; color:red; float: left;">*</label></div>
+                            <input style="width: 100%;" formControlName="from_date" type="date" >
+                    <!-- <div class="form-group m-0 calendar">
+                        <div class="input-group">
+                            <input class="form-control" formControlName=from_date [readonly]="true" placeholder="yyyy-mm-dd" name="dp"
+                               ngbDatepicker #d="ngbDatepicker" style="padding: 0.3rem;">
+                            <div class="input-group-append">
+                                <button (click)="d.toggle()" class="btn btn-outline-secondary calendar" type="button">
+                                    <span class="material-icons">
+                                        calendar_today
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">To Date :<label class="ng-tns-c39-61" style="font-size: smaller; color:red; float: left;">*</label></div>
+                    <input style="width: 100%;" formControlName="to_date" type="date">
+                    <!-- <div class="form-group m-0">
+                        <div class="input-group calendar">
+                            <input class="form-control" formControlName='to_date' [readonly]="true" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d1="ngbDatepicker" style="padding: 0.3rem;">
+                            <div class="input-group-append1">
+                                <button (click)="d1.toggle()" class="btn btn-outline-secondary calendar" type="button">
+                                    <span class="material-icons">
+                                        calendar_today
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Banner Link :</div>
+                    <input style="width: 100%;" formControlName="bannerlink" type="text">
+                </div>
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Select Page :</div>
+                    <input type="radio" id="HOME" name="banner_Page" value="HOME" (change)="OnchagePageType($event)" [checked]="pageType == 'HOME'" [disabled]='ispageType != "HOME"'>
+                      <label for="HOME">Home</label>&nbsp;&nbsp;
+                    <input type="radio" id="EXPLORE" name="banner_Page" value="EXPLORE" (change)="OnchagePageType($event)" [checked]="pageType == 'EXPLORE'" [disabled]='ispageType != "EXPLORE"'>
+                      <label for="EXPLORE">Explore</label>&nbsp;&nbsp;
+                    <input type="radio" id="FINANCE" name="banner_Page" value="FINANCE"(change)="OnchagePageType($event)" [checked]="pageType == 'FINANCE'" [disabled]='ispageType != "FINANCE"'>
+                      <label for="FINANCE">Finance</label>
+                </div>
+            </div>
+            <div class="row mt-2" *ngIf="pageType == 'EXPLORE'">
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Sub Lob :<label class="ng-tns-c39-61"
+                            style="font-size: smaller; color:red; float: left;">*</label></div>
+                            <ng-select [items]="SubLobData" [clearable]="false" class="form-group" bindLabel="lob_name" placeholder="Select Sub Lob" bindValue="lob_name" formControlName="sub_lob" (change)="GetLob($event)"></ng-select>
+                </div>
+                <div class="col-6">
+                    <div maxlength="200" class="faq-font-label">Lob :<label class="ng-tns-c39-61" style="font-size: smaller; color:red; float: left;">*</label></div>
+                        <ng-select [items]="lobData" [clearable]="false" class="form-group" bindLabel="lob" placeholder="Select Lob" bindValue="lob" formControlName="lob_type"></ng-select>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <ng-container *ngIf="!datas || removeImg">
+                        <button (click)="uploadFileInput.click()">
+                            <img src="./../../../../../assets/images/upload-icon.png" height="16px" width="16px"
+                                style="text-align: center;cursor: pointer;">
+                        </button>
+                        <input type="text" readonly formControlName="imgname"  [(ngModel)]="myfilename" placeholder="Upload Profile Picture" />
+                        <input type="file" hidden #uploadFileInput accept="image/jpeg,image/jpg,image/png" (change)="onSelectImagefile($event)" />
+                        <div class="imagePreview img-container" *ngIf="imageURL && imageURL !== ''">
+                            <img [src]="imageURL" [alt]="" height="280" width="94%">
+                            <input class="delete" type="button" (click) = "removeImage('new')" value="X" style="float: right;">
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="datas && !removeImg">
+                        <div class="imagePreview" *ngIf="safeURL">
+                            <img [src]="safeURL" [alt]="" height="280" width="94%">
+                            <input class="delete" type="button" (click) = "removeImage('Upadate')" value="X" style="float: right;"/>
+                        </div>
+                    </ng-container>
+                </div>
+            <div class="col-6" *ngIf="!datas">
+                <div maxlength="200" class="faq-font-label" style="color:red">Instruction :</div>
+                1.Please upload image 1920x569 Dimensions.
+                <br />2.Maximum image size should be 300kb
+                <br />3.Image format can be PNG or JPG
+                <br />4.Maximum 1 Image can be uploaded
+            </div>
+            </div>
+            <div class="row mt-2">
+                <button class="btn-primary" (click)="saveAndUpdate(btnLabel)" style="width:15%">{{btnLabel}}</button>
+            </div>
+        </form>
+    </div>
+</div>
+<ng-container *ngIf="showLoader">
+    <div class="loader">
+        <div class="ng-spinner ng-spinner-icon">
+            <br />
+            <div class="sh1"></div>
+            <div class="sh2"></div>
+        </div>
+    </div>
+</ng-container>

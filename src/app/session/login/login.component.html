@@ -1,0 +1,45 @@
+
+<div class="pre-login-backround">
+    <div class="top-header-prelogin">
+      <div style="padding: 22px; float:left;">
+        <img class="img-responsive" alt="" src="./assets/images/Tataroupogo.png">
+      </div>
+      <div style="padding: 22px; float:right;">
+        <img class="img-responsive" alt="" src="./assets/images/tml_logo.png">
+      </div>
+    </div>
+    <div class="login-wrap">
+      <div>
+        <form [formGroup]="signupForm"  (ngSubmit)="onSubmit()" class="container login-form">
+          <h1 style="text-align: center;">CV OSP ADMIN PORTAL</h1>
+      
+          <label for="email"><b>UserName</b></label>
+          <input class="form-control" appAppInputRestriction="" formControlName="username" type="text" 
+          [ngClass]="{'is-invalid': submitted && signupForm?.controls?.['username']?.errors}" placeholder="Enter Username" name="name" required>
+          <div *ngIf="submitted && signupForm?.controls?.['username']?.errors" class="invalid-feedback">
+            <div *ngIf="signupForm?.controls?.['username']?.errors?.['required']">Username is required</div>  
+          </div>
+          <label for="psw"><b>Password</b></label>
+          <input class="form-control" appAppInputRestriction="" formControlName="password"  
+          [ngClass]="{'is-invalid': submitted && signupForm?.controls?.['password']?.errors}"
+          type="password" placeholder="Enter Password" name="psw" required>
+          <div *ngIf="submitted && signupForm?.controls?.['password']?.errors" class="invalid-feedback">
+            <div *ngIf="signupForm.controls?.['password']?.errors?.['required']">Password is required</div>  
+          </div> 
+  
+          <button type="submit" class="btn">Sign In</button>
+        </form>
+      </div>
+    </div>
+</div>
+  
+<ng-container *ngIf="showLoader">
+    <div class="loader">
+        <div class="ng-spinner ng-spinner-icon"> 
+          <br/>
+          <div class="sh1"></div>
+        <div class="sh2"></div>
+        <!-- <h4 class="lt">loading</h4> -->
+    </div>
+    </div>
+</ng-container>

@@ -1,0 +1,44 @@
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
+
+.heading {
+  color: rgb(3, 3, 82);
+}
+
+.keys {
+  font-weight: 700 !important;
+  font-size: 14px !important;
+}
+
+.activeTab{
+  
+  /* background: darkblue; */
+  color: black !important;
+  font-weight: 600 !important;
+  border-bottom: 3px solid darkblue !important;
+  /* background-color: rgb(3, 3, 82);*/
+}
+.inActiveTab{
+  
+  /* background: darkblue; */
+  
+  font-weight: 600 !important;
+  // border-bottom: 3px solid darkblue !important;
+  /* background-color: rgb(3, 3, 82);*/
+}
+.inActiveTab a {
+  color: black !important;
+}
+
+.tableOverflow{
+  height: 200px; 
+  overflow-y: scroll;
+}
+
+.tableTH{
+  color: white;
+  text-align: center;
+}

@@ -1,0 +1,12 @@
+// HTML     = >   sass --watch --style compressed  src/sass/style.scss src/css/style.css
+// Angular  = >   sass --watch --style compressed  src/assets/sass/style.scss src/assets/css/style.css
+@import "variables"; 
+@import "typography";
+@import "base";
+@import "layout";
+@import "module";
+@import "state";
+@import "spacers"; 
+@import "mixin"; 
+@import "theme"; 
+// @import "~css-star-rating/css/star-rating.min.css";

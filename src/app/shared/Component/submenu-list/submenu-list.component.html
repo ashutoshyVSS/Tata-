@@ -1,0 +1,7 @@
+<div class="l-container l-page-nav" style="margin-top: 11px; margin-bottom: 15px;">
+    <ul class="l-page-nav__list">
+        <li *ngFor="let Detailrow of MenuDetails  ; index as i" class="l-page-nav__list-item">
+            <a (click)="onClick(i,Detailrow)" [ngClass]="{'active': ActiveMenu == Detailrow.page_detail_id}">{{Detailrow.page_display_name}} </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,73 @@
+<app-submenu-list [ActiveMenu]='ActiveMenu'></app-submenu-list>
+<section class="main-wrapper prod-list-page">
+    <div class="l-container">
+        <form [formGroup]="accessForm">
+        <div class="row">
+            <div class="col-4">
+                <ng-select [items]="roleData" [clearable]="false" class="form-group" bindLabel="role_name" placeholder="Select Role" bindValue="role_id" style="width:100%" formControlName="role_id" (change)="getPosition($event)">
+                </ng-select>
+            </div>
+            <div class="col-4">
+                <ng-select [items]="positionData" [clearable]="false" class="form-group" bindLabel="position_name" placeholder="Select Position" bindValue="position_id" style="width:100%" formControlName="position_id" (change)="getAccessTable($event)">
+                </ng-select>
+            </div>
+        </div>
+        <div class="l-content w-100 p-0 mt-2">
+            <div class="tbl-reports card-shadow bg-white h-100">
+                <div class="l-tbl-accordion overflow-auto">
+                    <div class="w-100 border-0 p-3">
+                        <div class="table-responsive">
+                            <table class="l-tbl">
+                                <tr class="main-tr">
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"><span>Main Menu</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"><span>Sub Menu</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-nowrap d-flex align-items-center"><span>Status</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <ng-container *ngIf="masterData.length >0">
+                                    <tr *ngFor="let row of masterData" class="click-tr">
+                                        <td class="text-nowrap">
+                                            {{row.page_master_name}}
+                                        </td>
+                                        <td class="text-nowrap">
+                                            {{row.page_detail_name}}
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <input *ngIf="row.page_master_name!=='Dashboard'" type="checkbox" [checked]="row.page_status" (change)="onSelectPage(row,$event)" />
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                <ng-container *ngIf="masterData.length == 0">
+                                    <tr class="text-nowrap text-align-center">
+                                        No Data Found
+                                    </tr>
+                                </ng-container>
+                            </table>
+                        </div>
+                        <div class="row mt-2" *ngIf="masterData.length >0">
+                            <button class="btnClass" (click)="saveMaster()" style="width:12%">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </div>
+    </form>
+    </div>
+</section>
+<ng-container *ngIf="showLoader">
+    <div class="loader">
+        <div class="ng-spinner ng-spinner-icon">
+            <br />
+            <div class="sh1"></div>
+            <div class="sh2"></div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,204 @@
+<div class="container">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        style="float: right;background: transparent;border: none;color: #000;font-size: 25px;margin-top: -40px;"
+        (click)="goBack()">
+        <span aria-hidden="true">×</span>
+    </button>
+    <div class="card mt-5" style="border: none;">
+        <form [formGroup]="blogForm">
+            <div class="row container wrap mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input class="form-control" (keypress)="omit_space_at_start($event)" formControlName="title"
+                            placeholder="Title" autocomplete="off">
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" formControlName="tag" placeholder="Tag"
+                            autocomplete="off" (keydown.enter)="$event.preventDefault()">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>Select Type</p>
+                </div>
+                <div class="row col-12">
+                    <div class="row col-6 ml-2" style="margin-left: 0;">
+                        <div class="col-6 form-check">
+                            <input formControlName="type_of_blog" type="radio" class="form-check-input" id="radio1" #radio1
+                                name="type_of_blog" value="IMAGE BASED" checked (change)="OnchangePageType(radio1.value)">Image
+                            Based
+                            <label class="form-check-label" for="radio1"></label>
+                        </div>
+                        <div class="col-6 form-check">
+                            <input formControlName="type_of_blog" type="radio" class="form-check-input" id="radio2" #radio2
+                                name="type_of_blog" value="VIDEO BASED" (change)="OnchangePageType(radio2.value)">Video Based
+                            <label class="form-check-label" for="radio2"></label>
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <div class="row col-md-6" *ngIf="pageType === 'IMAGE BASED'">
+                            <div class="col-6">
+                                <button mat-icon-button matPrefix
+                                    style="border: none !important;background: transparent !important;"
+                                    (click)="uploadFileInput.click()">
+                                    <mat-icon>attach_file</mat-icon>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <input type="text"
+                                    style="border: none;border-bottom: 1px solid grey;     margin-right: -55px;"
+                                    readonly formControlName="image_file" [(ngModel)]="myfilename"
+                                    placeholder="Select File" />
+                                <input type="file" hidden id="uploadFileInput" #uploadFileInput
+                                    accept="image/jpeg,image/jpg,image/png" (change)="onSelectImagefile($event)" />
+                                <div class="imagePreview img-container" *ngIf="imageURL && imageURL !== ''">
+                                    <img [src]="imageURL" [alt]="" height="200" width="250">
+                                    <input class="delete" type="button" (click)="removeImage()" value="X">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pb-1" *ngIf="pageType === 'VIDEO BASED'">
+
+                            <input #videoUrl id="videoUrl" (blur)="onBlurVideoUL(videoUrl.value)" class="form-control"
+                                placeholder="Video URL" formControlName="youtube_url">
+                        </div>
+                        <div>
+                            <iframe *ngIf="pageType === 'VIDEO BASED' && DisplayVideIframe" [src]='YoutubesafeURL'
+                                frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>Type</p>
+                </div>
+                <div class="row col-12">
+                    <div class="row col-6 ml-2" style="margin-left: 0;">
+                        <div class="col-4 form-check">
+                            <input formControlName="type" type="radio" class="form-check-input" id="blogRRadio"
+                                #blogRRadio name="type" value="BLOG" checked
+                                (change)="OnchangePageType(blogRRadio.value)">Blog
+                            <label class="form-check-label" for="radio1"></label>
+                        </div>
+                        <div class="col-4 form-check">
+                            <input formControlName="type" type="radio" class="form-check-input" id="newsRadio"
+                                #newsRadio name="type" value="NEWS" (change)="OnchangePageType(newsRadio.value)">News
+                            <label class="form-check-label" for="radio2"></label>
+                        </div>
+                        <div class="col-4 form-check">
+                            <input formControlName="type" type="radio" class="form-check-input" id="videoRadio"
+                                #videoRadio name="type" value="VIDEOS"
+                                (change)="OnchangePageType(videoRadio.value)">Videos
+                            <label class="form-check-label" for="radio2"></label>
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <select name="priority" class="form-select" id="priority" #priority formControlName="priority">
+                            <option value="" selected disabled>Select Priority</option>
+                            <option *ngFor="let item of priorityData" value="{{item.priority}}">{{item.priority}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row wrap container mt-3">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-label>Description</mat-label>
+                    </div>
+                </div>
+            </div>
+            <div class="row wrap container mt-3">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <div fxLayout="row wrap">
+                            <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 pr2">
+                                <div class="pb-1">
+                                    <ckeditor #myckeditor [config]="ckeConfig" formControlName="description"
+                                        name="overview" [readonly]="false" placeholder="Type the content here!"
+                                        debounce="500">
+                                    </ckeditor>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-label>Author Information</mat-label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row container mt-3">
+                <div class="col-12">
+                    <div class="col-4">
+                        <mat-form-field class="full-width">
+                            <input maxlength="60" (keypress)="omit_special_char($event)" matInput
+                                formControlName="author_name" placeholder="Author Name" autocomplete="off">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-4" *ngIf="btnUpdate == true || btnSave == true">
+                        <mat-form-field class="full-width">
+                            <button style="border: none !important;background: transparent !important;" mat-icon-button
+                                matPrefix (click)="uploadFileInput.click()">
+                                <mat-icon>attach_file</mat-icon>
+                            </button>
+                            <input type="text" readonly matInput formControlName="author_image_file"
+                                [(ngModel)]="myAuthorfilename" placeholder="Author Image" />
+                            <input type="file" hidden id="uploadFileInput" #uploadFileInput
+                                accept="image/jpeg,image/jpg,image/png"
+                                (change)="onSelectImagefile($event,'author_image')" />
+                            <div class="imagePreview img-container" *ngIf="imageAuthorURL && imageAuthorURL !== ''">
+                                <img [src]="imageAuthorURL" [alt]="" height="200" width="250">
+                                <input class="delete" type="button" (click)="removeImage('author')" value="X">
+                            </div>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                        <div class="pb-1">
+                            <mat-form-field class="full-width">
+                                <input (keypress)="omit_special_char($event)" matInput
+                                    formControlName="author_description" placeholder="About Author" autocomplete="off">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pb-1">
+                <a style="color: red;" [innerHtml]="ImageErrorString"></a>
+            </div>
+
+            <br>
+            <div style="display: flex;
+            justify-content: flex-end;
+            margin: 0 24px 24px 0;">
+                <div>
+                    <button mat-raised-button color="primary" *ngIf="btnSave" class="btnClass"
+                        (click)="onSubmit()">Submit</button>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" *ngIf="btnUpdate" class="btnClass"
+                        (click)="onSubmit()">Update</button>
+                </div>
+                <div>
+                    &nbsp;&nbsp;<button mat-raised-button color="warn" class="btnClass"
+                        (click)="goBack()">Cancel</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<ng-container *ngIf="showLoader">
+    <div class="loader">
+        <div class="ng-spinner ng-spinner-icon">
+            <br />
+            <div class="sh1"></div>
+            <div class="sh2"></div>
+        </div>
+    </div>
+</ng-container>

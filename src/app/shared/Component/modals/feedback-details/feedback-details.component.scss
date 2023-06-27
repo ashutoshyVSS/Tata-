@@ -1,0 +1,48 @@
+@media (max-width: 768px) {
+    .card {
+      width: 100%;
+    }
+  }
+  
+  .heading {
+    color: rgb(3, 3, 82);
+  }
+  
+  .keys {
+    font-weight: 700 !important;
+    font-size: 14px !important;
+  }
+  
+  .activeTab{
+    
+    /* background: darkblue; */
+    color: black !important;
+    font-weight: 600 !important;
+    border-bottom: 3px solid darkblue !important;
+    /* background-color: rgb(3, 3, 82);*/
+  }
+  .inActiveTab{
+    
+    /* background: darkblue; */
+    
+    font-weight: 600 !important;
+    // border-bottom: 3px solid darkblue !important;
+    /* background-color: rgb(3, 3, 82);*/
+  }
+
+  .modal-dialog{
+    width: 100%;
+    max-width: 600px !important;
+  }
+
+//   .rating{
+//         display: block;
+//         max-width: 100px;
+//         height: 20px;
+//         background: #eee;
+//         background: linear-gradient( 90deg, #fc0 var( --_score, 50% ), #eee 0 );
+//         mask: url( 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" ><path fill="%23000" d="M16 2 L20 12 30 12 22 19 25 30 16 23 7 30 10 19 2 12 12 12 Z"/></svg>' ) 0 0/20px 20px;
+
+// }
+
+  

@@ -1,0 +1,805 @@
+<div style="float: right">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: right;
+    background: transparent;
+    border: none;
+    color: #000;
+    font-size: 25px;" (click)="goBack()">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+<div class="row titleClass">
+    {{PageTitle}}
+</div>
+
+<div class="container">
+    <!-- <button type="button" class="btn btn-primary m-2 btnClass" (click)="goBack()">View List</button> -->
+    <div class="mt-3 mb-5">
+        <div class="row p-3">
+            <div class="col-md-3">
+                <ul class="nav nav-tabs" id="myTab" role="tablist" style="display:block">
+                    <li class="nav-item vehicleActiveBtn" role="presentation">
+                        <button class="nav-link active" id="vehicle-tab" data-bs-toggle="tab"
+                            data-bs-target="#vehicleInfo" type="button" role="tab" aria-controls="vehicle"
+                            aria-selected="true"><span *ngIf="productCatForm.invalid" style="color: red;">*&nbsp;&nbsp;</span>Vehicle Information</button>
+                    </li>
+                    <li class="nav-item vehicleActiveBtn" role="presentation">
+                        <button class="nav-link" id="performance-tab" data-bs-toggle="tab" data-bs-target="#performance" [disabled]="this.productCatForm.invalid && this.specsHighlightsForm.invalid"
+                            type="button" role="tab" aria-controls="performance" aria-selected="false"
+                            >Performance</button>
+                    </li>
+                    <li class="nav-item vehicleActiveBtn" role="presentation">
+                        <button class="nav-link" id="designBuild-tab" data-bs-toggle="tab" data-bs-target="#designBuild" [disabled]="this.productCatForm.invalid && this.specsHighlightsForm.invalid"
+                            type="button" role="tab" aria-controls="designBuild" aria-selected="false"
+                            >Design &
+                            Build</button>
+                    </li>
+                    <li class="nav-item vehicleActiveBtn" role="presentation">
+                        <button class="nav-link" id="comfort-tab" data-bs-toggle="tab" data-bs-target="#comfort" [disabled]="this.productCatForm.invalid && this.specsHighlightsForm.invalid"
+                            type="button" role="tab" aria-controls="comfort" aria-selected="false"
+                            >Comfort</button>
+                    </li>
+                    <li class="nav-item vehicleActiveBtn" role="presentation">
+                        <button class="nav-link" id="safety-tab" data-bs-toggle="tab" data-bs-target="#safety"
+                            type="button" [disabled]="this.productCatForm.invalid && this.specsHighlightsForm.invalid" role="tab" aria-controls="safety" aria-selected="false"
+                            >Safety &
+                            Warranty</button>
+                    </li>
+                    <li class="nav-item vehicleActiveBtn" role="presentation">
+                        <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image"
+                            type="button" [disabled]="this.productCatForm.invalid && this.specsHighlightsForm.invalid" role="tab" aria-controls="image" aria-selected="false"
+                            >Image-Video</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="vehicleInfo" role="tabpanel"
+                        aria-labelledby="vehicle-tab">
+                        <div class="accordion" id="vehicleExample">
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button tabsClass" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#product" aria-expanded="true" aria-controls="product">
+                                        Product Category
+                                    </button>
+                                </h5>
+                                <div id="product" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                    data-bs-parent="#vehicleExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="productCatForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="VC Number"
+                                                        [readonly]="VCNumber" minlength="12" maxlength="20"
+                                                        (focusout)="VCFocusOut()" formControlName="vehicle_number">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select name="Vehicle Type" class="form-select" id="vehicleType"
+                                                        #vehicleType formControlName="sub_lob">
+                                                        <option value="" selected disabled>Select Vehicle Type</option>
+                                                        <option value="Buses" [disabled]="isVcNumber">Buses</option>
+                                                        <option value="Icv Trucks" [disabled]="isVcNumber">Trucks</option>
+                                                        <option value="SCV Pickups" [disabled]="isVcNumber">SCV Pickups</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Product Description"
+                                                        formControlName="product_description" [readonly]="isVcNumber">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Model"
+                                                        formControlName="model" maxlength="150" [readonly]="isVcNumber">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div>
+                                                        <!-- Default switch -->
+                                                        <div class="custom-control custom-switch toggleElement">
+                                                            <span>Test Drive</span>
+                                                            <label class="switch" style="margin-left: 5px;">
+                                                                <input type="checkbox" [checked]="isTDriveActive"
+                                                                    (change)="isTDriveActive = !isTDriveActive"
+                                                                    formControlName="test_drive">
+                                                                <span class="slider round"></span>
+                                                            </label>
+                                                            <span
+                                                                style="margin-left: 5px;">{{isTDriveActive?'Yes':'No'}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="productHeading">
+                                    <button class="accordion-button collapsed tabsClass" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#productPrice" aria-expanded="false"
+                                        aria-controls="productPrice">
+                                        Product & Price Information
+                                    </button>
+                                </h5>
+                                <div id="productPrice" class="accordion-collapse collapse"
+                                    aria-labelledby="productHeading" data-bs-parent="#vehicleExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="productPriceForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Applications"
+                                                        maxlength="150" formControlName="vehicle_application">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Product Type"
+                                                        maxlength="30" formControlName="product_type">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Product Category" maxlength="30"
+                                                        formControlName="product_category">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-4">
+                                                    <input readonly oninput="this.value = Math.abs(this.value)" min="0"
+                                                        type="text" class="form-control" placeholder="Price Range"
+                                                        formControlName="price_range">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="overviewHeading">
+                                    <button class="accordion-button collapsed tabsClass" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#overview" aria-expanded="false"
+                                        aria-controls="overview">
+                                        Overview
+                                    </button>
+                                </h5>
+                                <div id="overview" class="accordion-collapse collapse" aria-labelledby="overviewHeading"
+                                    data-bs-parent="#vehicleExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="overviewForm">
+                                            <div class="row mt-3">
+                                                <ckeditor #myckeditor [config]="ckeConfig" formControlName="overview"
+                                                    name="overview" [readonly]="false" debounce="500">
+                                                </ckeditor>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="specsHighlights">
+                                    <button class="accordion-button collapsed tabsClass" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#specHighlights" aria-expanded="false"
+                                        aria-controls="specHighlights">
+                                        <span *ngIf="specsHighlightsForm.invalid" style="color: red;">*</span>Specification Highlights
+                                    </button>
+                                </h5>
+                                <div id="specHighlights" class="accordion-collapse collapse"
+                                    aria-labelledby="specsHighlights" data-bs-parent="#vehicleExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="specsHighlightsForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="GVW"
+                                                        formControlName="gvw_s" required maxlength="10">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Power"
+                                                        formControlName="max_power_s" required maxlength="10">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Fuel Tank"
+                                                        formControlName="fuel_tank_capacity_s" required maxlength="10">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Engine"
+                                                        formControlName="engine_type_s" required maxlength="10">
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="performance" role="tabpanel" aria-labelledby="performance-tab">
+                        <div class="accordion" id="performanceExample">
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="engineHeading">
+                                    <button class="accordion-button tabsClass" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#engine" aria-expanded="true" aria-controls="engine">
+                                        Engine
+                                    </button>
+                                </h5>
+                                <div id="engine" class="accordion-collapse collapse show"
+                                    aria-labelledby="engineHeading" data-bs-parent="#performanceExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="engineForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Max Power"
+                                                        formControlName="max_power" maxlength="150">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Max Torque"
+                                                        formControlName="max_torque" maxlength="150">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Emmission Norms" formControlName="emission_norms"
+                                                        maxlength="100">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Engine Type"
+                                                        formControlName="engine_type" maxlength="150">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Engine Cylinders"
+                                                        formControlName="engine_cylinders" maxlength="100">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Gradeability(%)" formControlName="gradeability"
+                                                        maxlength="200">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="fuelHeading">
+                                    <button class="accordion-button collapsed tabsClass" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#fuel" aria-expanded="false"
+                                        aria-controls="fuel">
+                                        Fuel
+                                    </button>
+                                </h5>
+                                <div id="fuel" class="accordion-collapse collapse" aria-labelledby="fuelHeading"
+                                    data-bs-parent="#performanceExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="fuelForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" maxlength="150"
+                                                        placeholder="Fuel Tank Capacity (Litres)"
+                                                        formControlName="fuel_tank_capacity">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select name="Fuel" class="form-select" id="fuel"
+                                                        formControlName="fuel_type">
+                                                        <option value="">Select Fuel</option>
+                                                        <option value="Diesel">Diesel</option>
+                                                        <option value="CNG">CNG</option>
+                                                        <option value="Petrol">Petrol</option>
+                                                        <option value="Electric">Electric</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="transmissionHeading">
+                                    <button class="accordion-button collapsed tabsClass" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#transmission" aria-expanded="false"
+                                        aria-controls="transmission">
+                                        Transmission
+                                    </button>
+                                </h5>
+                                <div id="transmission" class="accordion-collapse collapse"
+                                    aria-labelledby="transmissionHeading" data-bs-parent="#performanceExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="transmissionForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Clutch Type"
+                                                        formControlName="clutch_type" maxlength="100">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Gearbox"
+                                                        formControlName="gearbox" maxlength="100">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="designBuild" role="tabpanel" aria-labelledby="designBuild-tab">
+                        <div class="accordion" id="designExample">
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="dimensionHeading">
+                                    <button class="accordion-button tabsClass" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#dimension" aria-expanded="true" aria-controls="dimension">
+                                        Dimension & load Capacity
+                                    </button>
+                                </h5>
+                                <div id="dimension" class="accordion-collapse collapse show"
+                                    aria-labelledby="dimensionHeading" data-bs-parent="#designExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="dimensionLoadForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="GVW / GCW (Kgs)" formControlName="gvw"
+                                                        maxlength="150">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Wheelbase (mm)"
+                                                        formControlName="wheelbase" maxlength="150">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Overall Width (mm)" formControlName="width"
+                                                        maxlength="100">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Overall Height (mm)" formControlName="height"
+                                                        maxlength="100">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Overall Length (mm)" formControlName="length"
+                                                        maxlength="100">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="bodyHeading">
+                                    <button class="accordion-button collapsed tabsClass" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#bodyCabin" aria-expanded="false"
+                                        aria-controls="bodyCabin">
+                                        Body & Cabin
+                                    </button>
+                                </h5>
+                                <div id="bodyCabin" class="accordion-collapse collapse" aria-labelledby="bodyHeading"
+                                    data-bs-parent="#designExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="bodyCabinForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Cabin Type"
+                                                        formControlName="cabin_type" maxlength="100">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Load Body Length"
+                                                        formControlName="load_body_length" maxlength="100">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Load Body Type"
+                                                        formControlName="load_body_type" maxlength="100">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Load Body Dimension"
+                                                        formControlName="load_body_dimensions" maxlength="300">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Seating Capacity & Layout"
+                                                        formControlName="seating_capacity_layout" maxlength="300">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Side Windows"
+                                                        formControlName="side_windows" maxlength="100">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Hat-rack"
+                                                        formControlName="hat_rack" maxlength="100">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Passenger Door"
+                                                        formControlName="passenger_door" maxlength="300">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="wheelsHeading">
+                                    <button class="accordion-button collapsed tabsClass" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#wheels" aria-expanded="false"
+                                        aria-controls="wheels">
+                                        Wheels & Tyres
+                                    </button>
+                                </h5>
+                                <div id="wheels" class="accordion-collapse collapse" aria-labelledby="wheelsHeading"
+                                    data-bs-parent="#designExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="wheelsForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="No. of Wheels"
+                                                        oninput="this.value = Math.abs(this.value)" min="0"
+                                                        formControlName="no_wheels">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Front Tyre"
+                                                        formControlName="front_tyre" maxlength="30">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Rear Tyre"
+                                                        formControlName="rear_tyre" maxlength="30">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Axle Configuration"
+                                                        formControlName="axle_configuration" maxlength="100">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="comfort" role="tabpanel" aria-labelledby="comfort-tab">
+                        <div class="accordion" id="comfortExample">
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="comfortHeading">
+                                    <button class="accordion-button tabsClass" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#comfortAccordion" aria-expanded="true"
+                                        aria-controls="comfortAccordion">
+                                        Comfort
+                                    </button>
+                                </h5>
+                                <div id="comfortAccordion" class="accordion-collapse collapse show"
+                                    aria-labelledby="comfortHeading" data-bs-parent="#comfortExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="comfortForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <!-- <input type="text" class="form-control"
+                                                        placeholder="A/C">
+                                                        select/options -->
+                                                    <select name="AC" class="form-select" id="ac"
+                                                        formControlName="air_conditioning">
+                                                        <option value="">Select A/C</option>
+                                                        <option value="Blower">Blower</option>
+                                                        <option value="Non AC">Non AC</option>
+                                                        <option value="AC">AC</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Telematics"
+                                                        formControlName="telematics" maxlength="200">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Seat Type"
+                                                        formControlName="seat_type" maxlength="30">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Steering Type"
+                                                        formControlName="steering_type" maxlength="130">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="safety" role="tabpanel" aria-labelledby="safety-tab">
+                        <div class="accordion" id="safetyExample">
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="suspensionHeading">
+                                    <button class="accordion-button tabsClass" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#suspensionAccordion" aria-expanded="true"
+                                        aria-controls="suspensionAccordion">
+                                        Suspension & Brakes System
+                                    </button>
+                                </h5>
+                                <div id="suspensionAccordion" class="accordion-collapse collapse show"
+                                    aria-labelledby="suspensionHeading" data-bs-parent="#safetyExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="suspensionForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Rear Suspension" formControlName="rear_suspension"
+                                                        maxlength="150">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Front Suspension"
+                                                        formControlName="front_suspension" maxlength="150">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Brake Type"
+                                                        formControlName="brake_type" maxlength="150">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Hill Hold"
+                                                        formControlName="hill_hold" maxlength="30">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="warrantyHeading">
+                                    <button class="accordion-button tabsClass" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#warrantyInfoAccordion" aria-expanded="true"
+                                        aria-controls="warrantyInfoAccordion">
+                                        Warranty Information
+                                    </button>
+                                </h5>
+                                <div id="warrantyInfoAccordion" class="accordion-collapse collapse"
+                                    aria-labelledby="warrantyHeading" data-bs-parent="#safetyExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="warrantyForm">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" placeholder="Waranty"
+                                                        formControlName="warranty" maxlength="100">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
+                        <div class="accordion" id="imageExample">
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="imageHeading">
+                                    <button class="accordion-button tabsClass" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#imageGallery" aria-expanded="true"
+                                        aria-controls="imageGallery">
+                                        Image Gallary
+                                    </button>
+                                </h5>
+                                <div id="imageGallery" class="accordion-collapse collapse show"
+                                    aria-labelledby="imageHeading" data-bs-parent="#imageExample">
+
+                                    <div class="accordion-body">
+                                        <div class="card card-shadow">
+                                            <div class="row wrap container">
+                                                <div fxFlex="100" fxFlex.gt-xs="25" class="pr-1">
+                                                    <div class="pb-1">
+                                                        <p style="color: rgb(169, 169, 169);">
+                                                            Cover Image
+                                                        </p>
+                                                        <label>
+                                                            <input #RefInput type="file"
+                                                                (change)="onSelectCoverImage($event)"
+                                                                style="display:none" />
+                                                            <a color="primary" class="files">
+                                                                <mat-icon>insert_photo</mat-icon>
+                                                            </a>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="img-container" *ngIf="imgsrc">
+                                                    <img style="width:150px;height: 150px;object-fit: cover;"
+                                                        (click)="ShowImagePopUp(imgsrc)" class="img-to-fit col-md-6"
+                                                        src="{{imgsrc}}" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="row wrap mt-3 container">
+                                                <div fxFlex="100" fxFlex.gt-xs="25" class="pr-1">
+                                                    <div class="pb-1">
+                                                        <p style="color: rgb(169, 169, 169);">
+                                                            <!-- <label class="control-label" style="color: red;">*</label> -->
+                                                            Image
+                                                        </p>
+                                                        <label>
+                                                            <input #RefInput type="file" multiple
+                                                                (change)="SelectImageFiles($event)"
+                                                                style="display:none" />
+                                                            <a mat-raised-button color="primary" class="files">
+                                                                <mat-icon>add</mat-icon>
+                                                            </a>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <form [formGroup]="imageGalleryForm">
+                                                    <div class="row wrap mt-3" formArrayName="ProductUploadData">
+                                                        <div class="col-md-4"
+                                                            *ngFor="let group of getmultipleControl.controls;let i=index;"
+                                                            [formGroupName]="i">
+                                                            <div class="pb-1">
+
+                                                                <div class="img-container container">
+                                                                    <img class="img-fluid "
+                                                                        style="width:150px;height: 150px;object-fit: cover;"
+                                                                        (click)="ShowImagePopUp(group.get('FileImageSrc').value)"
+                                                                        src="{{group.get('FileImageSrc').value }}"
+                                                                        alt="" />
+                                                                    <input class="delete" type="button"
+                                                                        (click)="removeGroup(i)" value="X" />
+                                                                </div>
+
+                                                                <input type="hidden" formControlName="FileName"
+                                                                    value="{{group.get('FileName').value }}" />
+
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="row mt-3 container mb-3">
+                                                <div>
+                                                    <a style="color: red;" [innerHtml]="ImageErrorString"></a>
+                                                </div>
+                                                <div>
+                                                    <b style="color: red;">Instruction:</b>
+                                                    <br />1.Please upload image 1200x745 Dimensions
+                                                    <br />2.Maximum image size should be 200kb
+                                                    <br />3.Image format can PNG or JPG
+                                                    <br />4.Maximum 5 Images can be uploaded
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="youtubeHeading">
+                                    <button class="accordion-button collapsed tabsClass" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#youtube" aria-expanded="false"
+                                        aria-controls="youtube">
+                                        YouTube Video Gallery
+                                    </button>
+                                </h5>
+                                <div id="youtube" class="accordion-collapse collapse" aria-labelledby="youtubeHeading"
+                                    data-bs-parent="#imageExample">
+                                    <div class="accordion-body">
+                                        <form [formGroup]="youtubeVideoForm">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" placeholder="Video URL"
+                                                        formControlName="video_url" id="videoUrl" #videoUrl
+                                                        (blur)="onBlurVideoUL(videoUrl.value)" maxlength="100">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="pb-1">
+                                                        <button class="btnClass"
+                                                            (click)="AddYouTubeVideo()">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div *ngFor="let topping of video_url_sDisplay ; let i = index"
+                                                     class="pr-1 col-4" style="padding: 4%;">
+
+                                                    <div class="pb-1">
+
+                                                        <iframe style="width: 100%; height: 100%;"
+                                                            [src]='topping.Safurl' frameborder="0" allowfullscreen>
+                                                        </iframe>
+                                                        <input
+                                                            style="float: right; margin-right: 24%; position: absolute;    border-radius: 50%;
+                                                            border: none;
+                                                            margin: -13px 0 0 -12px;"
+                                                            type="button" (click)="RemoveYoutube(topping,i)"
+                                                            value="X" />
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="fileHeading">
+                                    <button class="accordion-button collapsed tabsClass" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#fileVideo" aria-expanded="false"
+                                        aria-controls="fileVideo">
+                                        File Video Gallery
+                                    </button>
+                                </h5>
+                                <div id="fileVideo" class="accordion-collapse collapse" aria-labelledby="fileHeading"
+                                    data-bs-parent="#imageExample">
+                                    <div class="accordion-body">
+                                        <!-- <form [formGroup]="fileVideoForm"> -->
+                                        <div class="card card-shadow">
+                                            <div class="row mt-3 container">
+                                                <div class="pb-1">
+                                                    <label>
+                                                        <input type='file' accept="video/mp4,video/x-m4v,video/*"
+                                                            (change)="onSelectVideoFile($event)"
+                                                            style="display: none" />
+                                                        <a mat-raised-button color="primary" class="files">
+                                                            <mat-icon>video_library</mat-icon>
+                                                        </a>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-3 mb-3 container" style="margin-left: 4px;"
+                                                *ngIf="video_Display.length > 0">
+                                                <div *ngFor="let item of video_Display ; let i = index" fxFlex="50"
+                                                    fxFlex.gt-xs="50" class="pr-1">
+                                                    <div class="pb-1">
+                                                        <video [autoplay]="'true'" [src]="item.Safurl" *ngIf="url1"
+                                                            height="200" style="width: fit-content;" controls></video>
+                                                        <iframe style="width: fit-content; height: fit-content;"
+                                                            [src]='item.Safurl' frameborder="0" allowfullscreen
+                                                            *ngIf="Edit=='Yes'">
+                                                        </iframe>
+                                                        <input style="position: absolute;" class="delete"
+                                                            (click)="removeVideo(item,i)" type="button" value="X" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3 mb-3 container">
+                                                <b style="color: red;">Instruction:</b>
+                                                <div class="container">
+                                                    <br />1. Video Size Should be less than 5 MB.
+                                                    <br />2. Maximum 5 videos can be upload.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- </form> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <button class="btnClass" (click)="save()">{{ActionType == 'add'? 'Submit':
+                                    'Update'}}</button>
+                                <button class="btn-danger unpublishBtn" style="    padding: 10px;
+                                margin-left: 10px;" (click)="resetAllForms()">Clear</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-container *ngIf="showLoader">
+    <div class="loader">
+        <div class="ng-spinner ng-spinner-icon">
+            <br />
+            <div class="sh1"></div>
+            <div class="sh2"></div>
+        </div>
+    </div>
+</ng-container>

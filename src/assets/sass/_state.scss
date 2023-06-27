@@ -1,0 +1,86 @@
+/*=============================
+        4.    S T A T E
+===============================*/ 
+
+.is-hidden {display:none;}
+.is-error {color:red;}
+.is-txt-cntr{text-align:center;} 
+
+/*========= FLEX ========*/
+.is-flex{display:flex;
+    &--v-align{align-items:center;}
+    &--h-align{justify-content:center;}
+    &--wrapp{flex-wrap:wrap;}
+    &--dir-colmn{flex-direction:column;}
+    &--dir-row{flex-direction:row;}
+    &--space-just-btwn{justify-content:space-between;}
+} 
+
+/*========= MARGIN ========*/
+.is-pdng-0{padding:0px;}
+.is-mrgn-0{margin:0px;}
+
+.is-mt-1{margin-top:10px;}
+.is-mt-2{margin-top:20px;}
+.is-mt-3{margin-top:30px;}
+.is-mt-4{margin-top:40px;}
+.is-mt-5{margin-top:50px;} 
+
+.is-mr-1{margin-right:10px;}
+.is-mr-2{margin-right:20px;}
+.is-mr-3{margin-right:30px;}
+.is-mr-4{margin-right:40px;}
+.is-mr-5{margin-right:50px;}
+
+.is-mb-1{margin-bottom:10px;}
+.is-mb-2{margin-bottom:20px;}
+.is-mb-3{margin-bottom:30px;}
+.is-mb-4{margin-bottom:40px;}
+.is-mb-5{margin-bottom:50px;} 
+
+.is-ml-1{margin-left:10px;}
+.is-ml-2{margin-left:20px;}
+.is-ml-3{margin-left:30px;}
+.is-ml-4{margin-left:40px;}
+.is-ml-5{margin-left:50px;}
+
+.is-mlr-1{margin-right:10px; margin-left:10px;}
+.is-mlr-2{margin-right:20px; margin-left:20px;}
+.is-mlr-3{margin-right:30px; margin-left:30px;}
+
+/*========= CARD ========*/
+.is-cards{background:$clr-white; box-shadow:0px 2px 4px rgba(0, 0, 0, 0.25); padding:15px;}
+
+/*========= COLOMN ========*/
+.is-half-colmn{width: 50%;}
+
+/*========= BACKGROUND ========*/
+.bg-grey-light{background:$clr-light-grey;}
+.bg-extra-light-grey{background:$clr-extralight-grey;}
+
+/*========= SHADOW ========*/
+.is-btm-shdw{box-shadow:0px 2px 4px rgba(0, 0, 0, 0.25); position:relative;}
+
+
+/*========= SOME FIXES ========*/
+
+app-home section.product:nth-child(odd){background:$clr-extralight-grey;}
+app-home section.product:nth-child(even){background:$clr-light-grey;}
+app-home section.l-pg-banner + section.product{z-index: 1; box-shadow:0px 2px 4px rgba(0, 0, 0, 0.25); position:relative; }
+
+
+/*========= WeOto ========*/
+.error-message{font-size:15px; color:#dc3545; padding-top: 3px; display: inline-block;}
+
+.ng-progress-bar.-active{position:fixed !important; left:0px !important; top:0px !important; height:100% !important; width:100% !important; transition:width .8s 0s, opacity 0s 0s; opacity:1 !important; z-index:9999 !important; background-color:#ffffffa3;}
+.ng-progress-barnew.-active{left:0px !important; top:0px !important; height:100% !important; width:100% !important; transition:width 6000 0s, opacity 0s 0s; opacity:1 !important; z-index:9999 !important; background-color:#ffffffa3; pointer-events:none; opacity:1.2;} 
+.ng-spinner{z-index:9999 !important; top:50% !important; left:50%;}
+.ng-spinner-icon{width:100px !important; height:100px !important; border-radius:50px; border-top:1.5px solid rgba(0, 0, 0, .2) !important; border-left:1.5px solid rgba(0, 0, 0, .6) !important; animation :500ms linear infinite spinner-animation !important;}
+@-webkit-keyframes spin{
+  0%{-webkit-transform:rotate(0deg);}
+  100%{-webkit-transform:rotate(360deg);}
+}  
+@keyframes spin{
+   0%{transform:rotate(0deg);}
+   100%{transform:rotate(360deg);}
+}

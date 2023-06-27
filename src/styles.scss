@@ -1,0 +1,296 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import "../src/assets/sass/style";
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+// @import "~ng-pick-datetime/assets/style/picker.min.css";
+// @import "~@ng-select/ng-select/themes/default.theme.css";
+// @import '~css-star-rating/scss/star-rating';
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.link {
+  color: blue;
+  cursor: pointer;
+  text-decoration-line: underline
+}
+
+.float-right {
+  float: right !important;
+}
+
+.cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+  pointer-events: none;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  // position: absolute;
+  z-index: 99999 !important;
+}
+
+.cdk-overlay-pane {
+  overflow: auto;
+  min-height: 0px !important
+}
+
+.ng-spinner {
+  z-index: 9999 !important;
+  top: calc(50% - 50px) !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.ng-spinner-icon {
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50px;
+  border-top: 1.5px solid rgba(0, 0, 0, .2) !important;
+  border-left: 1.5px solid rgba(0, 0, 0, .6) !important;
+  animation: 500ms linear infinite spinner-animation !important;
+
+}
+
+
+
+
+
+.loader {
+  display: block;
+  position: fixed !important;
+  left: 0px !important;
+  top: 0px !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  transition: width 0.8 0s, opacity 0s 0s;
+  opacity: 1 !important;
+  z-index: 9999 !important;
+  background-color: rgba(255, 255, 255, 0.5);
+  pointer-events: all;
+  cursor: wait;
+}
+
+.mandatory {
+  color: #dc3545
+}
+
+.cursor {
+  cursor: pointer
+}
+
+::ng-deep.swal2-container {
+  z-index: 1000000 !important;
+}
+
+.ng-spinner {
+  z-index: 9999 !important;
+  top: calc(50% - 50px) !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.ng-spinner-icon {
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50px;
+  border-top: 1.5px solid rgba(0, 0, 0, .2) !important;
+  border-left: 1.5px solid rgba(0, 0, 0, .6) !important;
+  animation: 500ms linear infinite spinner-animation !important;
+
+}
+
+.filter-popup .chkbox input[type=checkbox]+label {
+  white-space: none;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+body {
+  background: #333;
+}
+
+/** page **/
+.cssloader {
+  padding-top: calc(10vh - 30px);
+}
+
+/** loader **/
+.sh1 {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 50px 50px 0 0;
+  border-color: #007bff transparent transparent transparent;
+  margin: 0 auto;
+  animation: shk1 1s ease-in-out infinite normal;
+}
+
+.sh2 {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 50px 50px;
+  border-color: transparent transparent #080c5c transparent;
+  margin: -50px auto 0;
+  animation: shk2 1s ease-in-out infinite alternate;
+}
+
+/** animation starts here **/
+@keyframes shk1 {
+  0% {
+    transform: rotate(-360deg);
+  }
+
+  100% {}
+}
+
+@keyframes shk2 {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {}
+}
+
+.lt {
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  margin: 30px auto;
+  text-align: center;
+  font-weight: 100;
+  letter-spacing: 10px;
+}
+
+
+
+
+::ng-deep .mat-dialog-container {
+  box-shadow: 0px !important;
+  background: transparent !important;
+  color: transparent !important;
+  z-index: 1000000;
+}
+
+
+
+::ng-deep .cdk-global-overlay-wrapper {
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 1000000;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.styleSelect {
+  height: auto;
+}
+
+.show-overflow .ng-value-container {
+  max-height: 70px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.show-overflow .ng-value-container {
+  overflow-y: scroll;
+  max-height: 70px;
+}
+
+.show-overflow-customer .ng-value-container {
+  max-height: 70px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.show-overflow-customer .ng-value-container {
+  overflow-y: scroll;
+  max-height: 70px;
+}
+
+.show-overflow-division .ng-value-container {
+  max-height: 70px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.show-overflow-division .ng-value-container {
+  overflow-y: scroll;
+  max-height: 70px;
+}
+
+.hyperLinks {
+  text-decoration-line: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+.btnClass {
+  background: #1f348b;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  color: white;
+  font-weight: 600;
+}
+
+.publishbtn {
+  min-width: 75px;
+  background: #1f348b;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 7px 3px 7px;
+}
+
+.unpublishBtn {
+  min-width: 75px;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 7px 3px 7px;
+}
+
+div.img-container input.delete {
+  top: 0;
+  left: 79%;
+}
+.inactiveBtn{
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 7px 3px 7px;
+}
+  div.img-container input.delete {
+    top:0;
+    left:79%;
+  }

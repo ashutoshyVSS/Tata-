@@ -1,0 +1,27 @@
+<div class="container">
+    <div style="padding-bottom: 10px;">
+        <div class="row">
+            <div class="col-11">
+                <h4 class="mt-2 heading"><strong>Comment</strong></h4>
+            </div>
+            <div class="col">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    style="float: right;background: transparent;border: none;color: #000;font-size: 25px;"
+                    (click)="goBack()">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <h5><strong class="keys">Name:</strong> {{feedbackData?.first_name}} {{feedbackData?.last_name}}</h5>
+            <h5><strong class="keys">Contact Details:</strong> {{feedbackData?.contact_no}} , {{feedbackData?.email_id}}</h5>
+            <fieldset class="rating is-mb-1 stars">
+                <ngb-rating  [id]="'rating'" [max]="5" [readonly]="true" [(rate)]="feedbackData.rating" ></ngb-rating>
+            </fieldset>
+        </div>
+        <div class="row" >
+            <textarea [ngModel]="feedbackData?.category" style="width: 95%;height: 100px;margin-left: 10px;margin-right: 10px;"></textarea>
+        </div>
+    </div>
+</div>

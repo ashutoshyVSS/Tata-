@@ -1,0 +1,248 @@
+.chart-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    align-items: center;
+    .title {
+        font-family: "Open Sans", sans-serif !important;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+    }
+    .form-control {
+        font-size: 12px;
+        font-family: "Open Sans", sans-serif !important;
+        color: #333;
+    }
+  }
+  
+  .search-order-id .textfield{
+      width: 100%;
+  }
+  
+  .table-data {
+    thead {
+        tr {
+            th {
+                font-size: 12px;
+                font-weight: bold;
+                letter-spacing: 0.13px;
+                color: #080c5c;
+            }
+            border-bottom: solid 0.5px #d5e0ff;
+        }
+    }
+    tbody {
+        tr {
+            td {
+                font-size: 12px;
+                letter-spacing: normal;
+                color: #333;
+                .link {
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: #417be2;
+                    padding-right: 5px;
+                    &:visited{
+                        color: #417be2;
+                    }
+                    &:hover,                    
+                    &:active,
+                    &:active {
+                        cursor: pointer;
+                        color: #0a0a5b;
+                        text-decoration: none;
+                    }
+                }
+                .red-text {
+                    color: #ff6a19;
+                }
+            }
+        }
+    }
+  }
+  
+  .titlte-order-level{
+      padding-left: 15px;
+      padding-bottom: 1rem;
+      font-family: "Open Sans", sans-serif !important;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+  }
+  
+  .titlte-invoice-level{
+      padding-left: 15px;
+      padding-bottom: 1rem;
+      font-family: "Open Sans", sans-serif !important;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+  }
+
+  .padding-from-top{
+      padding-top: 1rem;
+  }
+
+  .view-more {
+    cursor: pointer;
+    color: #417be2;
+    font-size: 12px;
+    letter-spacing: 0.13px;
+    &:visited{
+        color: #417be2;
+    }
+    &:hover,   
+    &:active,
+    &:active {
+        cursor: pointer;
+        color: #0a0a5b;
+        text-decoration: none;
+    }
+  }
+  
+  .cursor{
+    cursor: pointer;
+  }
+  ng-select select-dropdown .selected {
+      display: none
+  }
+
+#labelOverlay{
+    font-size: 14px;
+    margin: 0rem;
+    font-weight: bold;
+}
+
+.header-msg-instruction{
+    color: red;
+}
+
+.used-size {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    //   text-align: center;
+    letter-spacing: -0.6px;
+}
+
+.small-charts__aside{
+    padding: 12px !important;
+    .icons{
+        flex: 25px 0 0 !important;
+    } 
+}
+
+.quatryrSelect{
+    margin-left: 2rem;
+}
+
+.seperate-div-order-invoice-level-right{
+    max-width: 49%;
+    margin-right: 1%;
+    // border: dashed 1px gray;
+    border-radius: 0.5rem;
+    padding: 15px
+}
+.seperate-div-order-invoice-level-right-top-card{
+    margin-right: 1%;
+    // border: dashed 1px gray;
+    border-radius: 0.5rem;
+    padding: 15px
+}
+
+.seperate-div-order-invoice-level-left{
+    max-width: 49%;
+    margin-left: 1%;
+    // border: dashed 1px gray;
+    border-radius: 0.5rem;
+    padding: 15px
+}
+
+.select-filter-scheme{
+    width: 50%;
+    margin-top: 1rem;
+}
+
+.sorting{
+    display: flex;
+}
+
+.search-order-id{
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+
+.header-msg-instruction{
+    color: red;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.textFont{
+    font-size: 11px;
+}
+.text-16{
+    font-size: 11px;
+}
+
+::ng-deep .search-order-id .refresh-icons {
+    position: relative !important; 
+    top: 0;
+    width: 40px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #307fe2;
+    margin-left: -0px !important
+}
+.refresh-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.dsaboard-filter-align{
+    max-width: 50px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: left;
+}
+
+.search-order-id button.btn-filter {
+    padding: 0px; 
+}
+
+.refresh{
+    padding: 5px;
+    border-radius: 5px;
+}
+.view-details{
+    float: right;
+    margin-top: 5px;
+    font-size: 12px;
+    text-decoration-line: underline; 
+    color: blue; 
+    cursor: pointer
+}
+
+.whiteSpace{
+    white-space: normal;
+}

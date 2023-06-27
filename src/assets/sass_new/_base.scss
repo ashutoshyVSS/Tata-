@@ -1,0 +1,240 @@
+/*=============================
+        1.    B A S E
+===============================*/
+*{margin:0;  outline:none; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box}
+// padding:0;
+html,body{overflow-x:hidden; font-weight:normal;}
+body,.mat-body, .mat-body-1, .mat-typography{font-family:'Open Sans', sans-serif; font-size:14px; font-weight: 400; color:$clr-black; background:$clr-white; padding-top:152px; letter-spacing: 0.3px; line-height: 1.5;
+    @media screen and (max-width:1367px){padding-top:136px; } 
+    @media screen and (max-width:1365px){padding-top:126px; } 
+    @media screen and (max-width:1140px){padding-top:76px; } 
+    @media screen and (max-width:767px){padding-top:65px; } 
+}
+body.login-page{padding-top: 0;}
+a{text-decoration:none; color:inherit; cursor: pointer; 
+    &:hover {text-decoration:none !important;}
+}
+img,svg{float:left; max-width:100%; height:auto;}
+p{float:left; width:100%; margin-bottom:15px; line-height:1.5;}
+ul,li,ol{list-style:none; margin: 0; padding: 0;}
+input,select,textarea{color:$clr-black; font-family:'Open Sans', sans-serif;}
+td{font-weight: normal;  }
+.btn-resend{float:left; margin:10px 0 0; color:$clr-blue;}
+.clearfix{clear: both;}
+.mob-btn-fltr{float: left; width: 100%; background: $clr-white; padding: 10px 15px; position: fixed; left: 0; bottom: 0; z-index:3; display: flex; justify-content: center; box-shadow: 0px -3px 5px rgba(0,0,0,.05); display: none; 
+    @media screen and (max-width:960px){display: flex;}
+    .button {color: $clr-light-blue; background:$clr-light-grey; box-shadow: 0px 2px 4px rgba(0,0,0,.25);
+        i{margin: 0 5px 0 0; }
+    }
+}
+select{ float: left; width: 100%; border: 1px solid $clr-grey; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; }
+.btn:focus, .btn.focus{box-shadow: none !important;}
+/*========= BASICS ========*/
+.card-shadow{box-shadow: 0 0 7px 2px #dae1f9;}
+
+
+/*========= MARGIN PADDING SETTING ========*/
+.pdng0{padding: 0;}
+
+/*========= PLACEHOLDER CSS ========*/
+::-webkit-input-placeholder {color:$clr-grey;}
+:-moz-placeholder           {color:$clr-grey; opacity:1;}
+::-moz-placeholder          {color:$clr-grey; opacity:1;}
+:-ms-input-placeholder      {color:$clr-grey;}
+
+/*========= HEADING CSS ========*/
+h1, h2, h3, h4, h5, h6{float:left; width:100%; font-family:'Open Sans', sans-serif !important; font-weight:normal; margin-bottom:20px; color:$clr-black; 
+    @media screen and (max-width:1100px){margin-bottom: 10px;}
+    a{font-weight:inherit;}
+}
+
+/*========= LOGO CSS ========*/
+.logo{float:left;
+    img{float:left; width: 165px;
+     @media screen and (max-width: 767px) {
+         width: 100px;
+     }
+    }
+}
+
+/*========= LOGO CSS ========*/
+.menu-icon{float: left; width: 30px; margin-top: 13px; margin-right: 20px; display: none;
+    @media screen and (max-width:1140px) {display: block;}
+    @media screen and (max-width:767px) {width: 21px; margin-top: 10px;}
+    @media screen and (max-width:640px) {margin-top: 6px;}
+}
+
+/*========= MOBILE MENU ICON ========*/
+.hamburger{float:right; z-index:1; height:20px; display:-ms-flexbox; display:flex; -ms-flex-align:center; align-items:center; -ms-flex-pack:center; justify-content:center; position:relative; display:none; border: 0; background: none;
+    @media screen and (max-width:1199px) { display:block;  }
+    &__aside{float:left; -ms-flex:none; flex:none; width:20px; height:2px; margin-top:0px; background:$clr-white; transition:all .4s ease;
+        &:after,&:before{content:''; position:absolute; z-index:1; top:2px; left:0; width:100%; height:2px; background:$clr-white; transition:all .4s ease;}
+        &:after{top:16px;}
+  }
+    &.active &__aside{background:none;}
+    &.active &__aside:after,
+    &.active &__aside:before{content:''; position:absolute; z-index:1; top:9px; left:0; width:100%; height:2px; background:$clr-white; transition:all .4s ease}
+    &.active &__aside:before{transform:rotate(45deg)}
+    &.active &__aside:after{transform:rotate(-45deg)}
+}
+[class^="col-"]{float: left;}
+/*========= BUTTON ========*/
+.btn-wrapp{float: left; width: 100%;}
+.button{float:left; height:40px; padding:0 20px; background:linear-gradient(97deg,#1c429e 3%,#0a0a5f 87%); color:$clr-white; font-family:'Open Sans', sans-serif; font-size:16px; border:0; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; cursor:pointer; overflow:hidden; position:relative; z-index:1; display:flex; align-items:center; justify-content:center; line-height: 1;
+    @media screen and (max-width:1360px) {font-size: 14px; padding: 0 18px;}
+    i{float:left; margin-left:5px;}
+    @media screen and (max-width:768px) {
+        padding:0 15px; height:32px; font-size:15px;
+  }
+    @media screen and (max-width:372px) {
+        font-size:13px;
+  }
+    &:before{content:""; width:0; position:absolute; z-index:-1; top:0; left:0; right:0; bottom:0; background:$clr-white; opacity:0.1; height:100%; transition:0.3s;}
+    &:hover:before{width:100%;}
+    &--btn-small{height:30px; padding:0 15px; font-size:14px;}
+    &--btn-brdr{background:$clr-white; border:1px solid $clr-grey; color:$clr-black;
+        &:before{background:$clr-grey;}
+  } 
+}
+.btn-outline-dark:focus, .btn-outline-dark.focus{box-shadow: none !important;}
+
+/*========= CHECK BOX ========*/
+.chkbox{float:left; margin-right:20px; display:flex; align-items:center; position: relative;
+    &:last-child{margin-right: 0;}
+    input{float:left; opacity:0; position:relative; left:0; top:0; position: absolute;}
+    input[type="checkbox"] + label{float:left; position:relative; color:$clr-black;  cursor:pointer; position: relative; margin: 0;
+        &:before{content:""; float:left; width:17px; height:17px; border:1px solid #8f93a5; margin-right:7px; margin-top:3px;}
+        &:after{content:"check"; float:left; width:15px; height:15px; background:$clr-blue; position:absolute; left:1px; top:4px; opacity:0; transition:0.5s; font-family: 'Material Icons'; display: flex; justify-content: center; align-items: center; font-size: 10px; color:$clr-white; }
+    } 
+    input[type="radio"] + label{float:left; position:relative; color:$clr-black; display:flex; cursor:pointer; position: relative; margin: 0;
+        &:before{ content:""; float:left; width:17px; height:17px; background: #ebedf7; border:1px solid #8f93a5; margin-right:7px; margin-top:0px; border-radius:100%; -webkit-border-radius:100%; -moz-border-radius:100%; -ms-border-radius:100%; -o-border-radius:100%; }
+        &:after{ content:""; float:left; width:9px; height:9px; background:$clr-blue; position:absolute; left:4px; top:4px; opacity:0; transition:0.5s; border-radius:100%; -webkit-border-radius:100%; -moz-border-radius:100%; -ms-border-radius:100%; -o-border-radius:100%; -webkit-transition:0.5s; -moz-transition:0.5s; -ms-transition:0.5s; -o-transition:0.5s; }
+    } 
+    input:checked ~ label{
+        &:after{opacity:1;}
+        &:before{border-color: $clr-blue;}
+    }
+    &.no-txt{
+        input[type="checkbox"] + label:before{margin-right: 0;}
+    }
+}
+
+.form-chk-list{float: left; width: 100%;
+    &-item{float: left; margin-right: 15px;}
+}
+
+/*========= CALENDAR BOX ========*/
+.calendar{ border: 1px solid $clr-grey; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px;
+    input{height: 24px; padding: 0 10px 1px; font-size: 12px; border: 0;}
+     button.calendar{height: 24px; width: 24px; padding: 0 3px; border: 0; background: url(../images/calendar.svg) no-repeat center;
+        &:hover{background: url(../images/calendar.svg) no-repeat center $clr-grey;}
+        .material-icons{ display: none;}
+    }
+    .dropdown-menu{font-size: 0.7rem;}
+}
+
+.srch-box{float: left; width: 100%; position: relative; margin-bottom: 15px;
+    input{ padding-left: 40px; border-radius:7px; -webkit-border-radius:7px; -moz-border-radius:7px; -ms-border-radius:7px; -o-border-radius:7px; }
+    .material-icons{position: absolute; left:10px; top:10px; color: $clr-light-blue; pointer-events: none;}
+}
+
+/*========= SELECT BOX ========*/
+.slctbox{float:left; width: 100%; position:relative;
+    &:after{content:""; width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:8px solid $clr-blue; position:absolute; right:15px; top:16px; z-index:2; pointer-events: none;}
+        select{ float:left; width:100%; height:40px; border:1px solid $clr-grey; padding:0 15px; font-family:'Open Sans', sans-serif; -webkit-appearance:none; -moz-appearance:none; appearance:none; border-radius:0; -webkit-border-radius:0; -moz-border-radius:0; -ms-border-radius:0; -o-border-radius:0;
+            &:focus {border-color: $clr-blue;}
+        }
+    &--small{
+        select{float:left; width:100%; height:24px; padding:0 5px; text-align:left;  -webkit-appearance:listbox; -moz-appearance:listbox; appearance:listbox;}
+        &:after{display:none;}
+  }
+}
+
+/*========= SEARCH BOX ========*/
+.header-search{float:left; width:175px; /* border:1px solid $clr-grey; */ position:relative; border-radius:25px; -moz-border-radius:25px; -webkit-border-radius:25px; overflow:hidden; margin:0 20px 0 10px;
+    .textfield{padding-right:40px; border:0;
+        @media screen and (max-width:992px){ height: 32px;}
+    }
+    input[type=button]{float:left; width:40px; height:100%; /* background:url(../images/magnify.png) no-repeat 50% 50%; */ position:absolute; right:0;top:0; border:0; cursor:pointer;}
+}
+
+/*========= TEXTFIELD BOX ========*/
+.textfield{/* float:left; */ width:100%; height:40px; font-size:15px; padding:0 15px; font-family:'Open Sans', sans-serif; border:1px solid $clr-grey;
+    &:focus{border-color: $clr-blue;}
+}
+.textfield--large{height:110px; padding:15px; resize:none;}
+
+/*========= SECTION TITILE ========*/
+.secttl{float:left; width:100%; margin-bottom:0; font-family:'Open Sans', sans-serif;
+    span{float:left; width:auto; font-weight: 700; /*  background:$clr-blue; color:$clr-white; padding:15px 30px; border-radius:5px 5px 0 0; -moz-border-radius:5px 5px 0 0; -webkit-border-radius:5px 5px 0 0; */
+        // @media screen and (max-width:1199px){  padding:7px 20px; font-size: 18px;}
+    }
+}
+
+/*========= SECTION TITILE ========*/
+.btn-box {float:left; width:100%; margin-top:10px;}
+
+/*========= SLIDER ARROW ========*/
+.slidebar{float:left; float:right; width:100%;
+    input.slider{-webkit-appearance:none; width:100%; height:1px;  background:$clr-grey;
+        &::-moz-range-thumb{-webkit-appearance:none; appearance:none; width:13px; height:13px; background:$clr-blue; cursor:pointer; border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%;}
+        &::-webkit-slider-thumb{-webkit-appearance:none; appearance:none; width:13px; height:13px; background:$clr-blue; cursor:pointer; border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%;}
+  }
+}
+
+/*========= SLIDER ARROW ========*/
+.slick-prev, .slick-next{float:left; width:50px; height:50px; border-radius:100%; -webkit-border-radius:100%; -moz-border-radius:100%; /* background:url(../images/sliderLarw-white.svg) no-repeat  15px 19px $clr-blue; */ box-shadow:0px 2px 4px rgba(0, 0, 0, 0.25); left:-15px;
+    @media screen and (max-width:767px){width:33px; height:33px; background-size: 14px; background-position: 10px 12px;}
+}
+.slick-next{/* background:url(../images/sliderRarw-white.svg) no-repeat 15px 19px $clr-blue; */ left:auto; right:-15px;
+    @media screen and (max-width:767px){background-size: 14px; background-position: 10px 12px;}
+}
+
+
+/*========= RATINGS ========*/
+.l-rating{float: left; display: flex;
+    div{color: $clr-orange; font-size: 18px;}
+}
+/*========= RATINGS ========*/
+.rating{border:none;float:left;
+    ngx-star-rating,form{float: left;}
+    input {display:none;}
+    label{color:$clr-grey; float:right;
+        &:before{margin:0 5px; font-size:18px; font-family:FontAwesome; display:inline-block; content:"\f005";}
+        &.half:before{content:"\f089"; position:absolute;}
+    }
+    /*========= HIGHTLIGHTS AND HOVER ========*/
+    input:checked ~ label, /* show gold star when clicked */
+    &:not(:checked) > label:hover, /* hover current star */
+    &:not(:checked) > label:hover ~ label{color:#F2994A;} /* hover previous stars in list */
+    input:checked + label:hover, /* hover current star when changing rating */
+    input:checked ~ label:hover,
+    label:hover ~ input:checked ~ label, /* lighten current selection */
+    input:checked ~ label:hover ~ label{color:#FFD700;}
+}
+
+.btn-close{float:left; width:30px; height:30px; right:24px; top:10px; position:absolute;z-index: 2; cursor: pointer;
+    @media screen and (max-width:767px){width:20px; height:20px;}
+    &:after,&:before{content:""; width:30px; height:1px; background:$clr-black; position:absolute; right:50%; top:50%; transform:translate(50%, 50%) rotate(45deg); transition:0.3s;    
+        @media screen and (max-width:767px){width:20px;}
+    }
+        &:before{transform:translate(50%, 50%) rotate(-45deg);}
+}
+
+
+/*========= SELECT BOX ========*/
+.slctboxngselect{float:left; width: 100%; position:relative;
+    &:after{content:""; width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; position:absolute; right:15px; top:16px; z-index:2; pointer-events: none;}
+        select{float:left; width:100%; height:40px; border:1px solid $clr-grey; border-radius:0; padding:0 15px; font-family:'Open Sans', sans-serif; -webkit-appearance:none; -moz-appearance:none; appearance:none;
+            &:focus{border-color: $clr-blue;}
+        }
+    &--small{
+        select{float:left; width:100%; height:24px; padding:0 5px; text-align:left;  -webkit-appearance:listbox; -moz-appearance:listbox; appearance:listbox;}
+        &:after{display:none;}
+  }
+}
+
+.tooltip{ 
+    .tooltip-inner{background:$clr-white; border:1px solid $clr-grey; color:$clr-black; font-size: 12px; }
+    &.bs-tooltip-bottom .arrow::before{border-bottom-color: $clr-grey;}
+}
